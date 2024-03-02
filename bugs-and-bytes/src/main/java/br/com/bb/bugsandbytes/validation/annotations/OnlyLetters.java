@@ -1,5 +1,6 @@
-package br.com.bb.bugsandbytes.validation;
+package br.com.bb.bugsandbytes.validation.annotations;
 
+import br.com.bb.bugsandbytes.validation.validators.OnlyLettersValidator;
 import jakarta.validation.Constraint;
 
 import java.lang.annotation.*;

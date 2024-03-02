@@ -1,5 +1,6 @@
-package br.com.bb.bugsandbytes.validation;
+package br.com.bb.bugsandbytes.validation.validators;
 
+import br.com.bb.bugsandbytes.validation.annotations.NotNullAndNotEmpty;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
