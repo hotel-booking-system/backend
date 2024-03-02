@@ -1,4 +1,4 @@
-package br.com.bb.bugsandbytes.exception;
+package br.com.bb.bugsandbytes.exception.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package br.com.bb.bugsandbytes.exception;
+package br.com.bb.bugsandbytes.exception.erros;
 
 public class UsernameNotFoundException extends RuntimeException {
 
