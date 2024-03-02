@@ -1,8 +1,6 @@
-package br.com.bb.bugsandbytes.user.domain;
+package br.com.bb.bugsandbytes.user.domain.dto;
 
 import lombok.*;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -14,19 +12,10 @@ import java.time.LocalDateTime;
 public class UserResponse {
 
 	private Long id;
-
 	private String name;
-
 	private String username;
-
 	private String password;
-
 	private String phoneNumber;
-
-	@CreationTimestamp
 	private LocalDateTime registrationDate;
-
-	@UpdateTimestamp
-	private LocalDateTime updateDate;
 
 }

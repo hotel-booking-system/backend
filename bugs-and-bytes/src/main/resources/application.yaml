@@ -19,6 +19,5 @@ logging:
   level:
     root: INFO
     org.springframework: DEBUG
-    org.hibernate: DEBUG
   file:
     name: application.log

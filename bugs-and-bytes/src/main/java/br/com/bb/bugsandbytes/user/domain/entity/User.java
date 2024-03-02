@@ -1,8 +1,8 @@
-package br.com.bb.bugsandbytes.user.domain;
+package br.com.bb.bugsandbytes.user.domain.entity;
 
+import br.com.bb.bugsandbytes.validation.annotations.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -20,26 +20,29 @@ import java.time.LocalDateTime;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@MinLength
+	@OnlyLetters
+	@Size(min = 3)
+	@NotNullAndNotEmpty
 	@Column(nullable = false)
-	@NotBlank(message = "O nome é obrigatório")
-	@Size(min = 3, message = "O nome deve ter no mínimo 3 caracteres")
 	private String name;
 
+	@Email
+	@NotNullAndNotEmpty
 	@Column(unique = true, nullable = false)
-	@Email(message = "O username deve ser um email válido")
-	@NotBlank(message = "O username é obrigatório")
 	private String username;
 
+	@StrongPassword
+	@NotNullAndNotEmpty
 	@Column(nullable = false)
-	@NotBlank(message = "A senha é obrigatória")
-	@Size(min = 8, message = "A senha deve ter no mínimo 8 caracteres")
 	private String password;
 
+	@PhoneNumber
+	@NotNullAndNotEmpty
 	@Column(nullable = false)
-	@NotBlank(message = "Número de telefone é obrigatório")
 	private String phoneNumber;
 
 	@CreationTimestamp
