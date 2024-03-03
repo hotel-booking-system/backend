@@ -7,7 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 public enum ErrorStatus {
 
-	BAD_REQUEST(400, "Bad Request", "Erro na requisição."),
+	BAD_REQUEST(400, "Bad Request", "O campo é obrigatório e deve ser preenchido corretamente."),
 	USERNAME_NOT_FOUND(404, "Not Found", "Usuário não encontrado."),
 	USERNAME_ALREADY_EXIST(409, "Conflict", "Usuário já cadastrado."),
 	SERVER_ERROR(500, "Internal Server Error", "Erro Inesperado");

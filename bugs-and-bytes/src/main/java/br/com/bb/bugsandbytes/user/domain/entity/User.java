@@ -1,9 +1,7 @@
 package br.com.bb.bugsandbytes.user.domain.entity;
 
-import br.com.bb.bugsandbytes.validation.annotations.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -23,25 +21,16 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@MinLength
-	@OnlyLetters
-	@Size(min = 3)
-	@NotNullAndNotEmpty
 	@Column(nullable = false)
 	private String name;
 
 	@Email
-	@NotNullAndNotEmpty
 	@Column(unique = true, nullable = false)
 	private String username;
 
-	@StrongPassword
-	@NotNullAndNotEmpty
 	@Column(nullable = false)
 	private String password;
 
-	@PhoneNumber
-	@NotNullAndNotEmpty
 	@Column(nullable = false)
 	private String phoneNumber;
 

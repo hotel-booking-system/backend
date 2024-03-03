@@ -4,9 +4,9 @@ POST http://localhost:8989/api/users/register
 Content-Type: application/json
 
 {
-  "name": "Juliane Maran",
-  "username": "juhmaran@email.com",
-  "password": "9o6P!ab3",
+  "name": "Suzi Maran",
+  "username": "suzi@email.com",
+  "password": "9o6P!axZ",
   "phoneNumber": "+5511998765432"
 }
 

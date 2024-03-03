@@ -18,11 +18,8 @@ public interface UserMapper {
 		return INSTANCIA;
 	}
 
-	UserResponse usertoUserResponse(User customer);
+	User toEntity(UserRequest userRequest);
 
-	/**
-	 * Excluir registrationDate e updateDate da request
-	 */
-	User userRequesttoUser(UserRequest request);
+	UserResponse toResponse(User user);
 
 }
