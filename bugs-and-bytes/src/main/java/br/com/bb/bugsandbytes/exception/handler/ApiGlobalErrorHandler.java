@@ -3,7 +3,7 @@ package br.com.bb.bugsandbytes.exception.handler;
 import br.com.bb.bugsandbytes.exception.dto.ErrorResponse;
 import br.com.bb.bugsandbytes.exception.dto.ErrorStatus;
 import br.com.bb.bugsandbytes.exception.erros.ApiBadRequestException;
-import br.com.bb.bugsandbytes.exception.erros.ServerErrorException;
+import br.com.bb.bugsandbytes.exception.erros.IdNotFoundException;
 import br.com.bb.bugsandbytes.exception.erros.UsernameAlreadyExistsException;
 import br.com.bb.bugsandbytes.exception.erros.UsernameNotFoundException;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +35,17 @@ public class ApiGlobalErrorHandler extends ResponseEntityExceptionHandler {
 				.code(ErrorStatus.USERNAME_NOT_FOUND.getCode())
 				.status(ErrorStatus.USERNAME_NOT_FOUND.getStatus())
 				.message(ErrorStatus.USERNAME_NOT_FOUND.getMessage())
+				.build();
+		return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+	}
+
+	@ExceptionHandler(IdNotFoundException.class)
+	public ResponseEntity<ErrorResponse> handleIdNotFoundException(IdNotFoundException ex) {
+		log.error("Erro: Usuário não encontrado.", ex);
+		ErrorResponse errorResponse = ErrorResponse.builder()
+				.code(ErrorStatus.ID_NOT_FOUND.getCode())
+				.status(ErrorStatus.ID_NOT_FOUND.getStatus())
+				.message(ErrorStatus.ID_NOT_FOUND.getMessage())
 				.build();
 		return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
 	}

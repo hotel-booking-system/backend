@@ -9,13 +9,12 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponse {
+public class RegisterUserResponse {
 
 	private Long id;
 	private String name;
 	private String username;
 	private String phoneNumber;
 	private LocalDateTime registrationDate;
-	private LocalDateTime updateDate;
 
 }

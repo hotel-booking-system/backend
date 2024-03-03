@@ -8,7 +8,8 @@ import lombok.Getter;
 public enum ErrorStatus {
 
 	BAD_REQUEST(400, "Bad Request", "O campo é obrigatório e deve ser preenchido corretamente."),
-	USERNAME_NOT_FOUND(404, "Not Found", "Usuário não encontrado."),
+	ID_NOT_FOUND(404, "ID Not Found", "ID não encontrado."),
+	USERNAME_NOT_FOUND(404, "Username Not Found", "Usuário não encontrado."),
 	USERNAME_ALREADY_EXIST(409, "Conflict", "Usuário já cadastrado."),
 	SERVER_ERROR(500, "Internal Server Error", "Erro Inesperado");
 

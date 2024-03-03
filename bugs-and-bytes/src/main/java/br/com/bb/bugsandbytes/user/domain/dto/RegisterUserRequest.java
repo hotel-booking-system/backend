@@ -1,7 +1,5 @@
 package br.com.bb.bugsandbytes.user.domain.dto;
 
-import br.com.bb.bugsandbytes.validation.annotations.NotNullAndNotEmpty;
-import jakarta.validation.constraints.Email;
 import lombok.*;
 
 @Getter
@@ -9,7 +7,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserRequest {
+public class RegisterUserRequest {
 
 	private String name;
 	private String username;

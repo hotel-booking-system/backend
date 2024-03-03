@@ -1,6 +1,8 @@
 package br.com.bb.bugsandbytes.user.domain.mapper;
 
-import br.com.bb.bugsandbytes.user.domain.dto.UserRequest;
+import br.com.bb.bugsandbytes.user.domain.dto.RegisterUserRequest;
+import br.com.bb.bugsandbytes.user.domain.dto.RegisterUserResponse;
+import br.com.bb.bugsandbytes.user.domain.dto.UpdateUserRequest;
 import br.com.bb.bugsandbytes.user.domain.dto.UserResponse;
 import br.com.bb.bugsandbytes.user.domain.entity.User;
 import org.mapstruct.Mapper;
@@ -18,8 +20,12 @@ public interface UserMapper {
 		return INSTANCIA;
 	}
 
-	User toEntity(UserRequest userRequest);
+	User toEntity(RegisterUserRequest registerUserRequest);
 
-	UserResponse toResponse(User user);
+	RegisterUserResponse toResponse(User user);
+
+	UserResponse userToUserResponse(User user);
+
+	User updateUserRequestToUser(UpdateUserRequest updateUserRequest);
 
 }
