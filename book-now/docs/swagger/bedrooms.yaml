@@ -1,0 +1,26 @@
+openapi: 3.0.3
+info:
+  title: BookNow - Bedrooms
+  description: BookNow - Bedrooms
+  version: 1.0.0
+servers:
+  - url: 'http:localhost:8888/api/hotel'
+tags:
+  - name: bedroom
+    description: Sobre os quartos
+paths:
+  /bedrooms:
+    get:
+      tags:
+        - bedroom
+      summary: Get Bedroom
+      operationId: getBedroom
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: Bedroom Controller
+
+  

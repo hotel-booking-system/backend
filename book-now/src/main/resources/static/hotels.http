@@ -1,0 +1,3 @@
+### get hoteis
+GET /api/hotel/hotels HTTP/1.1
+Host: localhost:8888
