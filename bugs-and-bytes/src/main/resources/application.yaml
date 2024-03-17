@@ -7,7 +7,7 @@ spring:
   application:
     name: bugs-and-bytes
   datasource:
-    url: jdbc:mysql://localhost:3306/criative_experience_db?useSSL=false&createDatabaseIfNotExist=true&useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/criative_experience_db?useSSL=false&createDatabaseIfNotExist=true
     username: root
     password: root
   jpa:
@@ -19,6 +19,5 @@ logging:
   level:
     root: INFO
     org.springframework: DEBUG
-    org.hibernate: DEBUG
   file:
     name: application.log
