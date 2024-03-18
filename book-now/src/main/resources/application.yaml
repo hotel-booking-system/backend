@@ -7,9 +7,9 @@ spring:
   application:
     name: book-now
   devtools:
-    add-properties: true # habilitado
+    add-properties: true
   datasource:
-    url: jdbc:mysql://localhost:3306/book_now_db?createDatabaseIfNotExist=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/book_now_db?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=UTC
     username: root
     password: root
   jpa:

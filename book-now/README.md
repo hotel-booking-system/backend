@@ -1,5 +1,18 @@
 # Book Now
 
+## Executar a aplicação com Docker
+
+* Utilizando wsl2
+
+1. Abrir o prompt de comando
+2. Ir no diretório que está o arquivo docker-compose.yaml
+3. Abrir o wsl: `wsl`
+4. Iniciar o docker: `sudo service docker start`
+5. Criar imagem:
+6. Executar o arquivo docker compose: `docker compose up -d`
+7. Pausar o docker: `sudo service docker stop`
+8. Reiniciar o docker: `sudo service docker restart`
+
 ### Backlog detalhado
 
 1. Criar projeto Java Spring com as dependências mínimas necessárias.
@@ -33,4 +46,9 @@
 | GET    | /hoteis/{id}/bedrooms              | buscar hotel e selecionar os quartos desocupado |
 | GET    | /hoteis/{id}/bedrooms/{id}/reserva | reserva/cancelamento de hotel                   |
 | GET    | /hoteis/{id}?date=00/00/0000       | filtrar datas                                   |
+
+## Links
+
+- [Integração com docker-compose no Spring Boot 3.1](https://medium.com/@valdemarjuniorr/integra%C3%A7%C3%A3o-com-docker-compose-no-spring-boot-3-1-b0bea36c9549)
+- [Using Docker Compose in Spring Boot 3](https://howtodoinjava.com/spring-boot/spring-boot-docker-compose/)
 
