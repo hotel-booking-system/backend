@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.hoteis;
+package br.com.hotel.booknow.hotels;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

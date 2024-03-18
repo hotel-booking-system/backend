@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.hoteis;
+package br.com.hotel.booknow.hotels;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

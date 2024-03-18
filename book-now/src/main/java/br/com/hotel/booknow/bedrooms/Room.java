@@ -1,6 +1,6 @@
 package br.com.hotel.booknow.bedrooms;
 
-import br.com.hotel.booknow.hoteis.Hotel;
+import br.com.hotel.booknow.hotels.Hotel;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
