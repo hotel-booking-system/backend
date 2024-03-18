@@ -1,0 +1,17 @@
+### get hoteis
+GET /api/hotel/hotels HTTP/1.1
+Host: localhost:8888
+
+### cadastrar hotel
+POST /api/hotel/hotels/register HTTP/1.1
+Host: localhost:8888
+Content-Type: application/json
+
+{
+  "hotelName": "",
+  "hotelLocation": "",
+  "email": "",
+  "phoneNumber": "",
+  "description": "",
+  "totalNumberOfRooms": ""
+}
