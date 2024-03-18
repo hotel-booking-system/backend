@@ -1,9 +1,9 @@
-package br.com.hotel.booknow.hoteis;
+package br.com.hotel.booknow.bedrooms;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @AllArgsConstructor
-public class HotelService {
+public class RoomService {
 }

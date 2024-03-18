@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/bedrooms")
-public class BedroomController {
+@RequestMapping(value = "/rooms")
+public class RoomController {
 
 	@GetMapping
 	public String getBedrooms() {
