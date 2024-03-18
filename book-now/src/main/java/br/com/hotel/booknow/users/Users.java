@@ -1,24 +1,21 @@
-package br.com.hotel.booknow.room;
+package br.com.hotel.booknow.users;
 
 import lombok.*;
 
-import java.math.BigDecimal;
+import java.util.Date;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Room {
+public class Users {
 
 	private Long id;
-	private String roomNumber;
-	private String roomType;
-	private BigDecimal dailyRate;
-	private String amenities;
-	private String description;
-	private String roomImages;
-	private String availability;
-	private String hotelId;
+	private String fullName;
+	private String email;
+	private String password;
+	private String phoneNumber;
+	private Date createDt;
 
 }

@@ -1,6 +1,6 @@
-package br.com.hotel.booknow.room;
+package br.com.hotel.booknow.users;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RoomRepository extends JpaRepository<Room, Long> {
+public interface UsersRepository extends JpaRepository<Users, Long> {
 }
