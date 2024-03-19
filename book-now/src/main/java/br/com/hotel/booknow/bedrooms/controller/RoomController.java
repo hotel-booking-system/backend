@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.bedrooms;
+package br.com.hotel.booknow.bedrooms.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

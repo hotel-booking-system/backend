@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.bedrooms;
+package br.com.hotel.booknow.bedrooms.domain;
 
 //@Getter
 //@Setter
