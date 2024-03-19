@@ -8,13 +8,25 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+/**
+ * <b>Handler global de exceções da API.</b>
+ * <p>
+ * Responsável por interceptar e tratar exceções de forma centralizada, retornando respostas HTTP apropriadas com
+ * detalhes da falha.
+ *
+ * @author juliane.maran
+ * @since 19-03-2024
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
 	/**
-	 * Status 500 - Internal Server Error
-	 * <p>
-	 * Erro genérico. Utilizado quando houver falha de conexão com o servidor.
+	 * Trata exceções gerais da aplicação.
+	 *
+	 * @param ex
+	 * 		Exceção que ocorreu
+	 *
+	 * @return Resposta HTTP com status 500 (Internal Server Error) e detalhes da falha.
 	 */
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleException(Exception ex) {
@@ -24,9 +36,12 @@ public class GlobalExceptionHandler {
 	}
 
 	/**
-	 * Status 400 - Bad Request
-	 * <p>
-	 * Utilizado para erro na requisição, campo inválido, campo obrigatório não preenchido.
+	 * Trata exceções de requisição inválida.
+	 *
+	 * @param ex
+	 * 		Exceção de requisição inválida.
+	 *
+	 * @return Resposta HTTP com status 400 (Bad Request) e detalhes da falha.
 	 */
 	@ExceptionHandler(BadRequestException.class)
 	public ResponseEntity<ErrorResponse> handleBadRequestException(BadRequestException ex) {
@@ -36,9 +51,12 @@ public class GlobalExceptionHandler {
 	}
 
 	/**
-	 * Status 401 - Unauthorized
-	 * <p>
-	 * O usuário tenta realizar uma ação, porém não está autenticado/logado no sistema.
+	 * Trata exceções de usuário não autenticado
+	 *
+	 * @param ex
+	 * 		Exceção de usuário não autenticado
+	 *
+	 * @return Resposta HTTP com status 401 (Unauthorization) e detalhes da falha.
 	 */
 	@ExceptionHandler(UnauthorizedException.class)
 	public ResponseEntity<ErrorResponse> handleUnauthorizedException(UnauthorizedException ex) {
@@ -48,9 +66,12 @@ public class GlobalExceptionHandler {
 	}
 
 	/**
-	 * Status 403 - Forbidden
-	 * <p>
-	 * O usuário tenta realizar uma ação, porém não possui permissão, mesmo autenticado.
+	 * Trata exceções de usuário não tem permissão
+	 *
+	 * @param ex
+	 * 		Exceção de usuário não tem permissão
+	 *
+	 * @return Resposta HTTP com status 403 (Forbidden) e detalhes da falha.
 	 */
 	@ExceptionHandler(ForbiddenException.class)
 	public ResponseEntity<ErrorResponse> handleForbiddenException(ForbiddenException ex) {
@@ -59,11 +80,13 @@ public class GlobalExceptionHandler {
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
 	}
 
-
 	/**
-	 * Status 404 - Not Found
-	 * <p>
-	 * Quando o campo solicitado não for encontrado ou não estiver cadastrado.
+	 * Trata exceções de recurso não encontrado
+	 *
+	 * @param ex
+	 * 		Exceção de recurso não encontrado
+	 *
+	 * @return Resposta HTTP com status 404 (Not Found) e detalhes da falha.
 	 */
 	@ExceptionHandler(NotFoundException.class)
 	public ResponseEntity<ErrorResponse> handleNotFoundException(NotFoundException ex) {
@@ -73,9 +96,12 @@ public class GlobalExceptionHandler {
 	}
 
 	/**
-	 * Status 409 - Conflict
-	 * <p>
-	 * Deve utilizar quando algum dado já estiver cadastrado/em uso.
+	 * Trata exceções de conflito de dados
+	 *
+	 * @param ex
+	 * 		Exceção de conflito de dados
+	 *
+	 * @return Resposta HTTP com status 409 (Conflict) e detalhes da falha.
 	 */
 	@ExceptionHandler(ConflictException.class)
 	public ResponseEntity<ErrorResponse> handleConflictException(ConflictException ex) {
