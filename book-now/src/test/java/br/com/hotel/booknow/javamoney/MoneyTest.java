@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.bedrooms;
+package br.com.hotel.booknow.javamoney;
 
 import lombok.extern.slf4j.Slf4j;
 import org.javamoney.moneta.FastMoney;
