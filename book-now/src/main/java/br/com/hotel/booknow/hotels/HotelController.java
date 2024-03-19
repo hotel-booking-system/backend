@@ -14,11 +14,6 @@ public class HotelController {
 
 	private final HotelService hotelService;
 
-	@GetMapping
-	public String getHoteis() {
-		return "Hotel Controller";
-	}
-
 	@PostMapping("/create")
 	public ResponseEntity<Hotel> createHotel(@RequestBody Hotel hotel) {
 		Hotel response = hotelService.createHotel(hotel);
@@ -55,7 +50,7 @@ public class HotelController {
 		return ResponseEntity.ok(hotel);
 	}
 
-	@GetMapping
+	@GetMapping("/list")
 	public ResponseEntity<List<Hotel>> listHotels() {
 		List<Hotel> hoteis = hotelService.listHotels();
 		return ResponseEntity.ok(hoteis);

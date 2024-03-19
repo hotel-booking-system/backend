@@ -2,70 +2,70 @@
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego
+GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego
 Content-Type: application/json
 
 ### Buscar Hotel CNPJ
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?cnpj=01040428000120'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?cnpj=01040428000120
+GET http://localhost:8888/api/hotel/hotels/search?cnpj=01040428000120
 Content-Type: application/json
 
 ### Buscar Hotel por Email
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?email=contato@hotelnaconchego.com'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?email=contato@hotelnaconchego.com
+GET http://localhost:8888/api/hotel/hotels/search?email=contato@hotelnaconchego.com
 Content-Type: application/json
 
 ### Buscar Hotel por Nome e CNPJ
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120
+GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&cnpj=01040428000120
 Content-Type: application/json
 
 ### Buscar Hotel por Nome e Email
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&email=contato@hotelnaconchego.com'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&email=contato@hotelnaconchego.com
+GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&email=contato@hotelnaconchego.com
 Content-Type: application/json
 
 ### Buscar Hotel por Nome e HoteType
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&hotelType=RESORT'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&hotelType=RESORT
+GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por CNPJ e Email
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?cnpj=01040428000120&email=contato@hotelnaconchego.com'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?cnpj=01040428000120&email=contato@hotelnaconchego.com
+GET http://localhost:8888/api/hotel/hotels/search?cnpj=01040428000120&email=contato@hotelnaconchego.com
 Content-Type: application/json
 
 ### Buscar Hotel por CNPJ e HoteType
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?cnpj=01040428000120&hotelType=RESORT'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?cnpj=01040428000120&hotelType=RESORT
+GET http://localhost:8888/api/hotel/hotels/search?cnpj=01040428000120&hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por Email e HoteType
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?email=contato@hotelnaconchego.com&hotelType=RESORT'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?email=contato@hotelnaconchego.com&hotelType=RESORT
+GET http://localhost:8888/api/hotel/hotels/search?email=contato@hotelnaconchego.com&hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por Nome, CNPJ e Email
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120&email=contato@hotelnaconchego.com'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120&
+GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&cnpj=01040428000120&
     email=contato@hotelnaconchego.com
 Content-Type: application/json
 
@@ -73,21 +73,21 @@ Content-Type: application/json
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120&hotelType=RESORT'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120&hotelType=RESORT
+GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&cnpj=01040428000120&hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por CNPJ, Email e HoteType
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?&cnpj=01040428000120&email=contato@hotelnaconchego.com&hotelType=RESORT'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?cnpj=01040428000120&email=contato@hotelnaconchego.com&hotelType=RESORT
+GET http://localhost:8888/api/hotel/hotels/search?cnpj=01040428000120&email=contato@hotelnaconchego.com&hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por Nome, Email e HoteType
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&email=contato@hotelnaconchego.com&hotelType=RESORT'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&email=contato@hotelnaconchego.com&
+GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&email=contato@hotelnaconchego.com&
     hotelType=RESORT
 Content-Type: application/json
 
@@ -95,6 +95,6 @@ Content-Type: application/json
 # curl -X GET
 #  'http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120&email=contato@hotelnaconchego.com&hotelType=RESORT'
 #  -H 'Content-Type: application/json'
-GET http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120&
+GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&cnpj=01040428000120&
     email=contato@hotelnaconchego.com&hotelType=RESORT
 Content-Type: application/json

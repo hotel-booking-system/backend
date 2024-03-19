@@ -12,7 +12,7 @@
 #	"description": "Exemplo Descrição",
 #	"roomCount": 10
 #}'
-POST http://localhost:8888/api/hotel/hotels/cadastrar
+POST http://localhost:8888/api/hotel/hotels/create
 Content-Type: application/json
 
 {
@@ -61,12 +61,12 @@ GET http://localhost:8888/api/hotel/hotels/1
 ### Listar todos os hotéis
 # curl -X GET
 #  http://localhost:8888/api/hotel/hotels
-GET http://localhost:8888/api/hotel/hotels
+GET http://localhost:8888/api/hotel/hotels/list
 
 ### Excluir Hotel
 # curl -X DELETE
-#  http://localhost:8888/api/hotel/hotels/1
-DELETE http://localhost:8888/api/hotel/hotels/1
+#  http://localhost:8888/api/hotel/hotels/{id}
+DELETE http://localhost:8888/api/hotel/hotels/{id}
 
 
 
