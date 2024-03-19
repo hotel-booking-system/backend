@@ -32,10 +32,19 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleException(Exception ex) {
-		log.error("Erro interno do servidor:", ex);
-		var errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,
-				ErrorCode.SERVER_ERROR.getCode(), ErrorCode.SERVER_ERROR.getMessage());
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
+
+		log.error("Erro inesperado: ", ex);
+
+		ErrorResponse response = ErrorResponse.builder()
+				.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.error(ErrorCode.SERVER_ERROR.getCode())
+				.message(ErrorCode.SERVER_ERROR.getMessage())
+				.build();
+
+		return ResponseEntity
+				.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.body(response);
+
 	}
 
 	/**
@@ -48,10 +57,19 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(BadRequestException.class)
 	public ResponseEntity<ErrorResponse> handleBadRequestException(BadRequestException ex) {
+
 		log.error("Requisição inválida: ", ex);
-		var errorResponse = new ErrorResponse(HttpStatus.BAD_REQUEST,
-				ErrorCode.BAD_REQUEST.getCode(), ErrorCode.BAD_REQUEST.getMessage());
-		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+
+		ErrorResponse response = ErrorResponse.builder()
+				.status(HttpStatus.BAD_REQUEST)
+				.error(ErrorCode.BAD_REQUEST.getCode())
+				.message(ErrorCode.BAD_REQUEST.getMessage())
+				.build();
+
+		return ResponseEntity
+				.status(HttpStatus.BAD_REQUEST)
+				.body(response);
+
 	}
 
 	/**
@@ -64,10 +82,19 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(UnauthorizedException.class)
 	public ResponseEntity<ErrorResponse> handleUnauthorizedException(UnauthorizedException ex) {
+
 		log.error("Usuário não autenticado: ", ex);
-		var errorResponse = new ErrorResponse(HttpStatus.UNAUTHORIZED,
-				ErrorCode.UNAUTHORIZED.getCode(), ErrorCode.UNAUTHORIZED.getMessage());
-		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+
+		ErrorResponse response = ErrorResponse.builder()
+				.status(HttpStatus.UNAUTHORIZED)
+				.error(ErrorCode.UNAUTHORIZED.getCode())
+				.message(ErrorCode.UNAUTHORIZED.getMessage())
+				.build();
+
+		return ResponseEntity
+				.status(HttpStatus.UNAUTHORIZED)
+				.body(response);
+
 	}
 
 	/**
@@ -80,10 +107,19 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(ForbiddenException.class)
 	public ResponseEntity<ErrorResponse> handleForbiddenException(ForbiddenException ex) {
+
 		log.error("Usuário não tem permissão: ", ex);
-		var errorResponse = new ErrorResponse(HttpStatus.FORBIDDEN,
-				ErrorCode.FORBIDDEN.getCode(), ErrorCode.FORBIDDEN.getMessage());
-		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
+
+		ErrorResponse response = ErrorResponse.builder()
+				.status(HttpStatus.FORBIDDEN)
+				.error(ErrorCode.FORBIDDEN.getCode())
+				.message(ErrorCode.FORBIDDEN.getMessage())
+				.build();
+
+		return ResponseEntity
+				.status(HttpStatus.FORBIDDEN)
+				.body(response);
+
 	}
 
 	/**
@@ -96,10 +132,19 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(NotFoundException.class)
 	public ResponseEntity<ErrorResponse> handleNotFoundException(NotFoundException ex) {
+
 		log.error("Recurso não encontrado: ", ex);
-		var errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND,
-				ErrorCode.NOT_FOUND.getCode(), ErrorCode.NOT_FOUND.getMessage());
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+
+		ErrorResponse response = ErrorResponse.builder()
+				.status(HttpStatus.NOT_FOUND)
+				.error(ErrorCode.NOT_FOUND.getCode())
+				.message(ErrorCode.NOT_FOUND.getMessage())
+				.build();
+
+		return ResponseEntity
+				.status(HttpStatus.NOT_FOUND)
+				.body(response);
+
 	}
 
 	/**
@@ -112,10 +157,19 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(ConflictException.class)
 	public ResponseEntity<ErrorResponse> handleConflictException(ConflictException ex) {
-		log.error("Conflito de dados: ", ex);
-		var errorResponse = new ErrorResponse(HttpStatus.CONFLICT,
-				ErrorCode.CONFLICT.getCode(), ErrorCode.CONFLICT.getMessage());
-		return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
+
+		log.error("Dado(s) já cadastrado(s): ", ex);
+
+		ErrorResponse response = ErrorResponse.builder()
+				.status(HttpStatus.CONFLICT)
+				.error(ErrorCode.CONFLICT.getCode())
+				.message(ErrorCode.CONFLICT.getMessage())
+				.build();
+
+		return ResponseEntity
+				.status(HttpStatus.CONFLICT)
+				.body(response);
+
 	}
 
 }

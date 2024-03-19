@@ -5,21 +5,24 @@ import br.com.hotel.booknow.hotels.domain.entity.HotelType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface HotelRepository extends JpaRepository<Hotel, Long> {
 
-	boolean existsByHotelNameIgnoreCase(String hotelName);
+	boolean existsByHotelNameIgnoreCase(String name);
 
 	boolean existsByEmailIgnoreCase(String email);
 
-	boolean existsByCnpjNumber(String cnpjNumber);
+	boolean existsByCnpjNumber(String cnpj);
 
-	List<Hotel> findByHotelNameContainingIgnoreCase(String hotelName);
+	Optional<Hotel> findById(Long id);
+
+	List<Hotel> findByHotelType(HotelType type);
+
+	List<Hotel> findByHotelNameContainingIgnoreCase(String name);
 
 	List<Hotel> findByCnpjNumberContainingIgnoreCase(String cnpj);
 
-	List<Hotel> findByEmailContainingIgnoreCase(String cnpjNumber);
-
-	List<Hotel> findByHotelType(HotelType hotelType);
+	List<Hotel> findByEmailContainingIgnoreCase(String email);
 
 }
