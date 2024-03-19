@@ -1,7 +1,10 @@
-package br.com.hotel.booknow.hotels;
+package br.com.hotel.booknow.hotels.validator;
 
 import br.com.hotel.booknow.exceptions.errors.ConflictException;
 import br.com.hotel.booknow.exceptions.errors.NotFoundException;
+import br.com.hotel.booknow.hotels.domain.entity.Hotel;
+import br.com.hotel.booknow.hotels.domain.entity.HotelType;
+import br.com.hotel.booknow.hotels.repository.HotelRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

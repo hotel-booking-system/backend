@@ -1,5 +1,7 @@
-package br.com.hotel.booknow.hotels;
+package br.com.hotel.booknow.hotels.repository;
 
+import br.com.hotel.booknow.hotels.domain.entity.Hotel;
+import br.com.hotel.booknow.hotels.domain.entity.HotelType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
