@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.exceptions;
+package br.com.hotel.booknow.exceptions.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
