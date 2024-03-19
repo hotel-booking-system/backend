@@ -1,17 +1,74 @@
-### get hoteis
-GET /api/hotel/hotels HTTP/1.1
-Host: localhost:8888
-
-### cadastrar hotel
-POST /api/hotel/hotels/register HTTP/1.1
-Host: localhost:8888
+### Cadastrar novo Hotel
+# curl -X POST
+#  http://localhost:8888/api/hotel/hotels/cadastrar
+#  -H 'Content-Type: application/json'
+#  -d '{
+#	"hotelName": "Exemplo Hotel",
+#	"location": "Exemplo Localização",
+#	"phoneNumber": "+1234567890",
+#	"email": "exemplo@email.com",
+#	"hotelType": "HOTEL",
+#	"cnpjNumber": "12345678901234",
+#	"description": "Exemplo Descrição",
+#	"roomCount": 10
+#}'
+POST http://localhost:8888/api/hotel/hotels/cadastrar
 Content-Type: application/json
 
 {
-  "hotelName": "",
-  "hotelLocation": "",
-  "email": "",
-  "phoneNumber": "",
-  "description": "",
-  "totalNumberOfRooms": ""
+  "hotelName": "Hotel Aconchego",
+  "location": "Rua Dias Gomes, São Paulo - SP",
+  "phoneNumber": "+11987654321",
+  "email": "contato@hotelnaconchego.com",
+  "hotelType": "HOTEL",
+  "cnpjNumber": "01040428000120",
+  "description": "Exemplo Descrição",
+  "roomCount": 10
 }
+
+### Atualizar dados do Hotel
+# curl -X PUT
+#  http://localhost:8888/api/hotel/hotels/1
+#  -H 'Content-Type: application/json'
+#  -d '{
+#	"hotelName": "Novo Nome Hotel",
+#	"location": "Nova Localização",
+#	"phoneNumber": "+9876543210",
+#	"email": "novemail@email.com",
+#	"hotelType": "RESORT",
+#	"cnpjNumber": "98765432101234",
+#	"description": "Nova Descrição",
+#	"roomCount": 20
+#}'
+PUT http://localhost:8888/api/hotel/hotels/1
+Content-Type: application/json
+
+{
+  "hotelName": "Hotel Aconchego",
+  "location": "Rua Dias Gomes, São Paulo - SP",
+  "phoneNumber": "+11987654321",
+  "email": "contato@hotelnaconchego.com",
+  "hotelType": "RESORT",
+  "description": "Exemplo Descrição",
+  "roomCount": 10
+}
+
+### Buscar Hotel por ID
+# curl -X GET
+#  http://localhost:8888/api/hotel/hotels/1
+GET http://localhost:8888/api/hotel/hotels/1
+
+### Listar todos os hotéis
+# curl -X GET
+#  http://localhost:8888/api/hotel/hotels
+GET http://localhost:8888/api/hotel/hotels
+
+### Excluir Hotel
+# curl -X DELETE
+#  http://localhost:8888/api/hotel/hotels/1
+DELETE http://localhost:8888/api/hotel/hotels/1
+
+
+
+
+
