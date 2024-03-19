@@ -1,5 +1,6 @@
 package br.com.hotel.booknow.hotels;
 
+import br.com.hotel.booknow.exceptions.errors.BadRequestException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,9 +24,13 @@ public class HotelService {
 		try {
 			hotelValidator.verifyUniqueData(hotel);
 			hotel.setCreatedAt(LocalDateTime.now());
+			log.info("Creating hotel: {}", hotel);
 			return hotelRepository.save(hotel);
-		} catch (Exception e) {
+		} catch (BadRequestException e) {
 			log.error("Error creating hotel: {}", e.getMessage());
+			throw new BadRequestException(e.getMessage());
+		} catch (Exception e) {
+			log.error("Unexpected error creating hotel: {}", e.getMessage());
 			throw e;
 		}
 	}
@@ -46,14 +51,19 @@ public class HotelService {
 		hotelRepository.delete(hotel);
 	}
 
+	@Transactional
 	public Hotel updateHotel(Long hotelId, Hotel hotel) {
 		try {
 			Hotel existingHotel = hotelValidator.getExistingHotel(hotelId);
 			hotelValidator.verifyUpdatedFields(hotel, existingHotel);
 			existingHotel.setUpdatedAt(LocalDateTime.now());
+			log.info("Updating hotel with ID {}: {}", hotelId, hotel);
 			return hotelRepository.save(existingHotel);
+		} catch (BadRequestException e) {
+			log.error("Error updating hotel with ID {}: {}", hotelId, e.getMessage());
+			throw new BadRequestException(e.getMessage());
 		} catch (Exception e) {
-			log.error("Erro ao atualizar hotel com ID {}: {}", hotelId, e.getMessage());
+			log.error("Unexpected error updating hotel with ID {}: {}", hotelId, e.getMessage());
 			throw e;
 		}
 	}
