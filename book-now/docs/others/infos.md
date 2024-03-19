@@ -163,4 +163,24 @@
 - confirmação da reserva
 - cancelar reserva
 
-padronizações de moedas (ISO 4217)
+[ISO 4217 - CÓDIGOS DE MOEDA DO PAÍS](https://pt.iban.com/currency-codes)
+
+---
+
+## List<> vs Set<>
+
+| #                 | `List<>`                                                                                                  | `Set<>`                                                                                  |
+|:------------------|:----------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------|
+| Ordem             | Preserva a ordem de inserção dos quartos.                                                                 | Não garante a ordem dos quartos.                                                         |
+| Duplicatas        | Permite quartos duplicados na lista.                                                                      | Não permite quartos duplicados no conjunto.                                              |
+| Acesso por índice | Permite acesso direto aos quartos por índice.                                                             | Não permite acesso direto aos quartos por índice.                                        |
+| Performance       | Buscar um quarto por índice é rápido, mas adicionar ou remover um quarto no meio da lista pode ser lento. | Adicionar ou remover um quarto é rápido, mas buscar um quarto por índice pode ser lento. |
+
+### Considerações
+
+* Se você precisa preservar a ordem de inserção dos quartos e permitir duplicatas, use `List`.
+* Se você não precisa da ordem de inserção dos quartos e não quer permitir duplicatas, use `Set`.
+* Se você precisa acessar os quartos por índice, use `List`.
+* Se você precisa de um desempenho rápido para adicionar ou remover quartos, use `Set`.
+
+---

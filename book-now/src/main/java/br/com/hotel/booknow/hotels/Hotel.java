@@ -1,11 +1,14 @@
 package br.com.hotel.booknow.hotels;
 
-import br.com.hotel.booknow.bedrooms.Room;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.br.CNPJ;
+import org.springframework.validation.annotation.Validated;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -14,38 +17,57 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "hotels")
+@Validated
 public class Hotel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false, unique = true)
-	@NotEmpty(message = "Campo obrigatório")
-	@Size(min = 3, message = "O campo de ter no mínimo 3 caracteres")
+	@NotBlank(message = "{hotelName.blank}")
+	@Size(min = 3, message = "{hotelName.size}")
+	@Column(unique = true, nullable = false)
 	private String hotelName;
 
+	@NotBlank(message = "{location.blank}")
+	@Size(min = 10, message = "{location.size}")
 	@Column(nullable = false)
-	@NotEmpty(message = "Campo obrigatório")
-	private String hotelLocation;
+	private String location;
 
+	@NotBlank(message = "{phoneNumber.blank}")
+	@Pattern(regexp = "^\\+?\\d{4,15}$", message = "{phoneNumber.pattern}")
 	@Column(nullable = false)
-	@Email(message = "Email inválido")
-	@NotEmpty(message = "Campo obrigatório")
-	private String email;
-
-	@Column(nullable = false)
-	@NotEmpty(message = "Campo obrigatório")
 	private String phoneNumber;
 
+	@NotBlank(message = "{email.blank}")
+	@Email(message = "{email.email}")
+	@Column(unique = true, nullable = false)
+	private String email;
+
+	@NotNull(message = "{hotelType.blank}")
+	@Enumerated(EnumType.STRING)
+	private HotelType hotelType;
+
+	@NotBlank(message = "{cnpjNumber.blank}")
+	@Size(min = 14, max = 14, message = "{cnpjNumber.size}")
+	@CNPJ(message = "{cnpjNumber.cnpj}")
+	@Column(unique = true, nullable = false)
+	private String cnpjNumber;
+
+	@NotBlank(message = "{description.blank}")
+	@Size(min = 3, message = "{description.size}")
+	@Column(nullable = false)
 	private String description;
 
+	@NotNull(message = "{roomCount.notNull}")
+	@Min(value = 1, message = "{roomCount.min}")
 	@Column(nullable = false)
-	@NotNull(message = "Campo obrigatório")
-	@Min(value = 1, message = "O campo deve ter no mínimo 1 quarto cadastrado")
-	private Integer totalNumberOfRooms;
+	private Integer roomCount;
 
-	@OneToMany
-	private List<Room> rooms; // lista de quartos - 1 hotel para muitos quartos
+	@CreationTimestamp
+	private LocalDateTime createdAt;
+
+	@UpdateTimestamp
+	private LocalDateTime updatedAt;
 
 }

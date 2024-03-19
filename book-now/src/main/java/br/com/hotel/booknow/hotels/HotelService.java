@@ -1,9 +1,85 @@
 package br.com.hotel.booknow.hotels;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+@Slf4j
 @Service
 @AllArgsConstructor
 public class HotelService {
+
+	private final HotelRepository hotelRepository;
+	private final HotelValidator hotelValidator;
+
+	@Transactional
+	public Hotel createHotel(Hotel hotel) {
+		try {
+			hotelValidator.verifyUniqueData(hotel);
+			hotel.setCreatedAt(LocalDateTime.now());
+			return hotelRepository.save(hotel);
+		} catch (Exception e) {
+			log.error("Error creating hotel: {}", e.getMessage());
+			throw e;
+		}
+	}
+
+	@Transactional(readOnly = true)
+	public Hotel findHotelById(Long id) {
+		return hotelValidator.getExistingHotel(id);
+	}
+
+	@Transactional(readOnly = true)
+	public List<Hotel> listHotels() {
+		return hotelRepository.findAll();
+	}
+
+	@Transactional
+	public void deleteHotel(Long id) {
+		Hotel hotel = findHotelById(id);
+		hotelRepository.delete(hotel);
+	}
+
+	public Hotel updateHotel(Long hotelId, Hotel hotel) {
+		try {
+			Hotel existingHotel = hotelValidator.getExistingHotel(hotelId);
+			hotelValidator.verifyUpdatedFields(hotel, existingHotel);
+			existingHotel.setUpdatedAt(LocalDateTime.now());
+			return hotelRepository.save(existingHotel);
+		} catch (Exception e) {
+			log.error("Erro ao atualizar hotel com ID {}: {}", hotelId, e.getMessage());
+			throw e;
+		}
+	}
+
+	@Transactional(readOnly = true)
+	public List<Hotel> searchHotel(String nome, String cnpj, String email, HotelType hotelType) {
+
+		List<Hotel> results = new ArrayList<>();
+
+		if (StringUtils.hasText(nome)) {
+			results.addAll(hotelValidator.findByName(nome));
+		}
+
+		if (StringUtils.hasText(cnpj)) {
+			results.addAll(hotelValidator.findByCnpj(cnpj));
+		}
+
+		if (StringUtils.hasText(email)) {
+			results.addAll(hotelValidator.findByEmail(email));
+		}
+
+		if (hotelType != null) {
+			results.addAll(hotelValidator.findHotelType(hotelType));
+		}
+
+		return results;
+	}
+
 }

@@ -1,0 +1,97 @@
+### get hoteis
+GET http://localhost:8888/api/hotel/hotels
+
+### cadastrar hotel
+POST http://localhost:8888/api/hotel/hotels/cadastrar
+Content-Type: application/json
+
+{
+  "hotelName": "xxx",
+  "location": "xxx",
+  "phoneNumber": "123456",
+  "email": "asdaaa@fadfadf.com",
+  "hotelType": "eee",
+  "cnpjNumber": "45424899000108",
+  "description": "fafadfadfadfafda"
+}
+
+### Buscar Hotel por Nome
+# curl -X GET
+#  'http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120&email=contato@hotelnaconchego.com&hotelType=RESORT'
+#  -H 'Content-Type: application/json'
+GET http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego
+Content-Type: application/json
+
+### Buscar Hotel por Nome, CNPJ, Email e HoteType
+# curl -X GET
+#  'http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120&email=contato@hotelnaconchego.com&hotelType=RESORT'
+#  -H 'Content-Type: application/json'
+GET http://localhost:8888/api/hotel/hotels/buscar?name=Hotel Aconchego&cnpj=01040428000120&
+    email=contato@hotelnaconchego.com&hotelType=RESORT
+Content-Type: application/json
+
+# name=Hotel Aconchego
+# cnpj=01040428000120
+# email=contato@hotelnaconchego.com
+# hotelType=HOTEL
+
+### Atualizar dados do Hotel
+# curl -X PUT
+#  http://localhost:8888/api/hotel/hotels/1
+#  -H 'Content-Type: application/json'
+#  -d '{
+#	"hotelName": "Novo Nome Hotel",
+#	"location": "Nova Localização",
+#	"phoneNumber": "+9876543210",
+#	"email": "novemail@email.com",
+#	"hotelType": "RESORT",
+#	"cnpjNumber": "98765432101234",
+#	"description": "Nova Descrição",
+#	"roomCount": 20
+#}'
+PUT http://localhost:8888/api/hotel/hotels/1
+Content-Type: application/json
+
+{
+  "hotelName": "Hotel Aconchego",
+  "location": "Rua Dias Gomes, São Paulo - SP",
+  "phoneNumber": "+11987654321",
+  "email": "contato@hotelnaconchego.com",
+  "hotelType": "RESORT",
+  "description": "Exemplo Descrição",
+  "roomCount": 10
+}
+
+### Cadastrar novo Hotel
+# curl -X POST
+#  http://localhost:8888/api/hotel/hotels/cadastrar
+#  -H 'Content-Type: application/json'
+#  -d '{
+#	"hotelName": "Exemplo Hotel",
+#	"location": "Exemplo Localização",
+#	"phoneNumber": "+1234567890",
+#	"email": "exemplo@email.com",
+#	"hotelType": "HOTEL",
+#	"cnpjNumber": "12345678901234",
+#	"description": "Exemplo Descrição",
+#	"roomCount": 10
+#}'
+POST http://localhost:8888/api/hotel/hotels/cadastrar
+Content-Type: application/json
+
+{
+  "hotelName": "Hotel Aconchego",
+  "location": "Rua Dias Gomes, São Paulo - SP",
+  "phoneNumber": "+11987654321",
+  "email": "contato@hotelnaconchego.com",
+  "hotelType": "HOTEL",
+  "cnpjNumber": "01040428000120",
+  "description": "Exemplo Descrição",
+  "roomCount": 10
+}
+
+###
+
+
+
+
