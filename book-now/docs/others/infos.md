@@ -184,3 +184,33 @@
 * Se você precisa de um desempenho rápido para adicionar ou remover quartos, use `Set`.
 
 ---
+
+### Sobre o CNPJ
+
+- Os 8 primeiros dígitos (XX.XXX.XXX) formam a 'raiz', que identifica a empresa
+- Os 4 dígitos seguintes, após a barra (YYYY) foram o sufixo, que identifica uma unidade de atuação de empresa, ou seja,
+  um endereço de ativiadde da pessoa jurídica
+- Os 2 últimos dígitos, após o traço (ZZ) formam o 'dígito verificador', que é o resultdo de uma equação com os 12
+  números anteriores.
+- Deste modo, os CNPJs no formato XX.XXX.XXX/0001-ZZ identificam a matriz da empresa
+
+---
+
+* Dados da empresa: dados gerais de contato da empresa
+    * nome
+    * email
+    * inscrição estadual
+    * CNPJ
+    * telefone
+    * celular
+    * data de abertura
+* Endereço: endereço completo da sede da empresa
+    * CEP
+    * Logradouro
+    * Número
+    * Complemento
+    * Bairro
+    * Cidade
+    * Estado
+    * Sigla Estado
+
