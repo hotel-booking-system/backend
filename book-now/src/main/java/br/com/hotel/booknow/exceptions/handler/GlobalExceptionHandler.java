@@ -3,6 +3,7 @@ package br.com.hotel.booknow.exceptions.handler;
 import br.com.hotel.booknow.exceptions.dto.ErrorCode;
 import br.com.hotel.booknow.exceptions.dto.ErrorResponse;
 import br.com.hotel.booknow.exceptions.errors.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
  * @author juliane.maran
  * @since 19-03-2024
  */
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -30,8 +32,9 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleException(Exception ex) {
+		log.error("Erro interno do servidor:", ex);
 		var errorResponse = new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR,
-				"Erro interno do servidor", ex.getMessage());
+				ErrorCode.SERVER_ERROR.getCode(), ErrorCode.SERVER_ERROR.getMessage());
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
 	}
 
@@ -45,8 +48,9 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(BadRequestException.class)
 	public ResponseEntity<ErrorResponse> handleBadRequestException(BadRequestException ex) {
+		log.error("Requisição inválida: ", ex);
 		var errorResponse = new ErrorResponse(HttpStatus.BAD_REQUEST,
-				ErrorCode.BAD_REQUEST.getCode(), ex.getMessage());
+				ErrorCode.BAD_REQUEST.getCode(), ErrorCode.BAD_REQUEST.getMessage());
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
 	}
 
@@ -60,8 +64,9 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(UnauthorizedException.class)
 	public ResponseEntity<ErrorResponse> handleUnauthorizedException(UnauthorizedException ex) {
+		log.error("Usuário não autenticado: ", ex);
 		var errorResponse = new ErrorResponse(HttpStatus.UNAUTHORIZED,
-				ErrorCode.UNAUTHORIZED.getCode(), ex.getMessage());
+				ErrorCode.UNAUTHORIZED.getCode(), ErrorCode.UNAUTHORIZED.getMessage());
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
 	}
 
@@ -75,8 +80,9 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(ForbiddenException.class)
 	public ResponseEntity<ErrorResponse> handleForbiddenException(ForbiddenException ex) {
+		log.error("Usuário não tem permissão: ", ex);
 		var errorResponse = new ErrorResponse(HttpStatus.FORBIDDEN,
-				ErrorCode.FORBIDDEN.getCode(), ex.getMessage());
+				ErrorCode.FORBIDDEN.getCode(), ErrorCode.FORBIDDEN.getMessage());
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(errorResponse);
 	}
 
@@ -90,8 +96,9 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(NotFoundException.class)
 	public ResponseEntity<ErrorResponse> handleNotFoundException(NotFoundException ex) {
+		log.error("Recurso não encontrado: ", ex);
 		var errorResponse = new ErrorResponse(HttpStatus.NOT_FOUND,
-				ErrorCode.NOT_FOUND.getCode(), ex.getMessage());
+				ErrorCode.NOT_FOUND.getCode(), ErrorCode.NOT_FOUND.getMessage());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
 	}
 
@@ -105,8 +112,9 @@ public class GlobalExceptionHandler {
 	 */
 	@ExceptionHandler(ConflictException.class)
 	public ResponseEntity<ErrorResponse> handleConflictException(ConflictException ex) {
+		log.error("Conflito de dados: ", ex);
 		var errorResponse = new ErrorResponse(HttpStatus.CONFLICT,
-				ErrorCode.CONFLICT.getCode(), ex.getMessage());
+				ErrorCode.CONFLICT.getCode(), ErrorCode.CONFLICT.getMessage());
 		return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
 	}
 
