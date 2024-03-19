@@ -51,4 +51,5 @@
 
 - [Integração com docker-compose no Spring Boot 3.1](https://medium.com/@valdemarjuniorr/integra%C3%A7%C3%A3o-com-docker-compose-no-spring-boot-3-1-b0bea36c9549)
 - [Using Docker Compose in Spring Boot 3](https://howtodoinjava.com/spring-boot/spring-boot-docker-compose/)
+- [Beans Validation - Solucionando problemas de integridade dos dados persistentes](https://www.devmedia.com.br/beans-validation-solucionando-problemas-de-integridade-dos-dados-persistentes/27733)
 
