@@ -1,13 +1,13 @@
-package br.com.hotel.booknow.hotels.service;
+package br.com.hotel.booknow.app.hotels.service;
 
-import br.com.hotel.booknow.exceptions.errors.BadRequestException;
-import br.com.hotel.booknow.exceptions.errors.ConflictException;
-import br.com.hotel.booknow.exceptions.errors.NotFoundException;
-import br.com.hotel.booknow.exceptions.errors.ServerErrorException;
-import br.com.hotel.booknow.hotels.domain.entity.Hotel;
-import br.com.hotel.booknow.hotels.domain.entity.HotelType;
-import br.com.hotel.booknow.hotels.repository.HotelRepository;
-import br.com.hotel.booknow.hotels.validator.HotelValidator;
+import br.com.hotel.booknow.app.hotels.domain.entity.HotelType;
+import br.com.hotel.booknow.app.hotels.repository.HotelRepository;
+import br.com.hotel.booknow.core.exceptions.errors.BadRequestException;
+import br.com.hotel.booknow.core.exceptions.errors.ConflictException;
+import br.com.hotel.booknow.core.exceptions.errors.NotFoundException;
+import br.com.hotel.booknow.core.exceptions.errors.ServerErrorException;
+import br.com.hotel.booknow.app.hotels.domain.entity.Hotel;
+import br.com.hotel.booknow.app.hotels.validator.HotelValidator;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -54,9 +54,13 @@ public class HotelService {
 	@Transactional
 	public Hotel createHotel(Hotel hotel) {
 		try {
-			hotelValidator.verifyUniqueData(hotel);
 			hotel.setCreatedAt(LocalDateTime.now());
-			log.info("Cadastrando novo hotel: {}", hotel);
+			if (hotelRepository.existsByCnpjNumber(hotel.getCnpjNumber())) {
+				throw new IllegalArgumentException("CNPJ já cadastrado para outro hotel");
+			}
+			if (hotelRepository.existsByEmail(hotel.getEmail())) {
+				throw new IllegalArgumentException("Email já cadastrado para outro hotel");
+			}
 			return hotelRepository.save(hotel);
 		} catch (BadRequestException e) {
 			log.error("Erro ao cadastrar hotel: {}", hotel);

@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.hotels.domain.entity;
+package br.com.hotel.booknow.app.hotels.domain.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
@@ -31,13 +31,6 @@ public class Hotel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	/**
-	 * <b>Nome do hotel</b>
-	 * <p>
-	 * Não pode ser vazio nem conter apenas espaços em branco <br> O nome do hotel deve ter no mínimo 3 caracteres <br>
-	 * Único, não nulo
-	 */
-	@NotBlank
 	@Size(min = 3)
 	@Column(unique = true, nullable = false)
 	private String hotelName;
@@ -48,7 +41,6 @@ public class Hotel {
 	 * Não pode ser vazio nem conter apenas espaços em branco <br> A localização do hotel deve ter no mínimo 10
 	 * caracteres <br> Não nulo.
 	 */
-	@NotBlank
 	@Size(min = 10)
 	@Column(nullable = false)
 	private String location;
@@ -60,7 +52,6 @@ public class Hotel {
 	 * 15 caracteres. <br> O sinal + é opcional. <br> O número de telefone deve seguir o padrão +XXXXXXXXXXXXX ou
 	 * XXXXXXXXXXXXXX ou +XXX ou XXXX <br> Não nulo.
 	 */
-	@NotBlank
 	@Pattern(regexp = "^\\+?\\d{4,15}$")
 	@Column(nullable = false)
 	private String phoneNumber;
@@ -72,7 +63,6 @@ public class Hotel {
 	 * <code>@Email</code>: Formato de Email válido. <br>
 	 * Único e não nulo.
 	 */
-	@NotBlank
 	@Email
 	@Column(unique = true, nullable = false)
 	private String email;
@@ -83,7 +73,6 @@ public class Hotel {
 	 * Não pode ser nulo <br>
 	 * <code>@Enumerated(EnumType.STRING)</code>: Armazenado como string
 	 */
-	@NotNull
 	@Enumerated(EnumType.STRING)
 	private HotelType hotelType;
 
@@ -94,7 +83,6 @@ public class Hotel {
 	 * <code>@CNPJ</code>: Formato de CNPJ válido.
 	 * Único e não nulo.
 	 */
-	@NotBlank
 	@Size(min = 14, max = 14)
 	@CNPJ
 	@Column(unique = true, nullable = false)
@@ -106,7 +94,6 @@ public class Hotel {
 	 * Não pode ser vazio nem conter apenas espaços em branco <br> A descrição do hotel deve ter no mínimo 3 caracteres
 	 * <br> Não nulo.
 	 */
-	@NotBlank
 	@Size(min = 3)
 	@Column(nullable = false)
 	private String description;
@@ -116,7 +103,6 @@ public class Hotel {
 	 * <p>
 	 * Não pode ser nulo <br> A quantidade de quartos deve ser maior ou igual a 1 <br> Não nulo.
 	 */
-	@NotNull
 	@Min(value = 1)
 	@Column(nullable = false)
 	private Integer roomCount;

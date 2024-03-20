@@ -1,11 +1,13 @@
-package br.com.hotel.booknow.bedrooms.domain.dto;
+package br.com.hotel.booknow.app.bedrooms.domain.dto;
 
-import br.com.hotel.booknow.bedrooms.domain.RoomType;
-import br.com.hotel.booknow.hotels.domain.entity.Hotel;
+import br.com.hotel.booknow.app.bedrooms.domain.RoomType;
 import lombok.*;
 
 import java.math.BigDecimal;
 
+/**
+ * Classe responsável por receber as informações do Usuário
+ */
 @Getter
 @Setter
 @Builder
@@ -13,12 +15,12 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class BedroomRequest {
 
-	private Integer number;
+	private String number;
 	private RoomType roomType;
 	private Integer capacity;
 	private BigDecimal dailyRate;
 	private String description;
 	private Boolean available;
-	private Hotel hotel;
+	private Long hotelId;
 
 }

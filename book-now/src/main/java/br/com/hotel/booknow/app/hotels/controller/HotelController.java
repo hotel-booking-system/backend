@@ -1,8 +1,8 @@
-package br.com.hotel.booknow.hotels.controller;
+package br.com.hotel.booknow.app.hotels.controller;
 
-import br.com.hotel.booknow.hotels.domain.entity.Hotel;
-import br.com.hotel.booknow.hotels.domain.entity.HotelType;
-import br.com.hotel.booknow.hotels.service.HotelService;
+import br.com.hotel.booknow.app.hotels.domain.entity.Hotel;
+import br.com.hotel.booknow.app.hotels.domain.entity.HotelType;
+import br.com.hotel.booknow.app.hotels.service.HotelService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

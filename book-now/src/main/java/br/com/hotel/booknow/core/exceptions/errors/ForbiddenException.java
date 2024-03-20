@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.exceptions.errors;
+package br.com.hotel.booknow.core.exceptions.errors;
 
 public class ForbiddenException extends RuntimeException {
 

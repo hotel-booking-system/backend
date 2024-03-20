@@ -1,21 +1,15 @@
-package br.com.hotel.booknow.bedrooms.repository;
+package br.com.hotel.booknow.app.bedrooms.repository;
 
-import br.com.hotel.booknow.bedrooms.domain.Bedroom;
+import br.com.hotel.booknow.app.bedrooms.domain.Bedroom;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
 public interface BedroomRepository extends JpaRepository<Bedroom, Long> {
 
-//	List<Bedroom> findByTipo(RoomType tipo);
+	boolean existsByNumber(String number);
 
-//	List<Bedroom> findByDataDisponivelAfter(LocalDateTime data);
+	Optional<Bedroom> findByNumberAndHotelId(String number, Long id);
 
-//	List<Bedroom> findByValorDiariaLessThan(BigDecimal valor);
 
-	boolean existsByNumber(Integer number);
-
-	Optional<Bedroom> findByNumberAndHotelId(Integer number, Long id);
-
-	boolean existsByNumberAndHotelId(Integer number, Long id);
 }

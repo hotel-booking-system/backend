@@ -1,16 +1,15 @@
-package br.com.hotel.booknow.bedrooms.service;
+package br.com.hotel.booknow.app.bedrooms.service;
 
-import br.com.hotel.booknow.bedrooms.domain.Bedroom;
-import br.com.hotel.booknow.bedrooms.repository.BedroomRepository;
-import br.com.hotel.booknow.exceptions.errors.ConflictException;
-import br.com.hotel.booknow.exceptions.errors.NotFoundException;
-import br.com.hotel.booknow.hotels.repository.HotelRepository;
-import br.com.hotel.booknow.hotels.service.HotelService;
-import jakarta.transaction.Transactional;
+import br.com.hotel.booknow.app.bedrooms.domain.Bedroom;
+import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomRequest;
+import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomResponse;
+import br.com.hotel.booknow.app.bedrooms.repository.BedroomRepository;
+import br.com.hotel.booknow.core.exceptions.errors.NotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -19,91 +18,109 @@ import java.util.List;
 public class BedroomService {
 
 	private final BedroomRepository bedroomRepository;
-	private final HotelRepository hotelRepository;
 
-	private final HotelService hotelService;
+	// CREATE
+	public BedroomResponse createBedroom(BedroomRequest request) {
 
-	@Transactional
-	public Bedroom saveBedroom(Bedroom bedroom) {
+		Bedroom bedroom = Bedroom.builder()
+				.number(request.getNumber())
+				.roomType(request.getRoomType())
+				.capacity(request.getCapacity())
+				.dailyRate(request.getDailyRate())
+				.description(request.getDescription())
+				.available(request.getAvailable())
+				.hotelId(request.getHotelId())
+				.build();
 
-		if (bedroomRepository.existsByNumber(bedroom.getNumber())) {
-			throw new IllegalArgumentException("Bedroom number already exists");
+		bedroom = bedroomRepository.save(bedroom);
+
+		return BedroomResponse.builder()
+				.bedroomId(bedroom.getId())
+				.number(bedroom.getNumber())
+				.roomType(bedroom.getRoomType())
+				.capacity(bedroom.getCapacity())
+				.dailyRate(bedroom.getDailyRate())
+				.description(bedroom.getDescription())
+				.available(bedroom.getAvailable())
+				.hotelId(bedroom.getHotelId())
+				.build();
+
+	}
+
+	// READ - Listar
+	public List<BedroomResponse> getAllBedrooms() {
+
+		List<Bedroom> bedrooms = bedroomRepository.findAll();
+		List<BedroomResponse> bedroomResponses = new ArrayList<>();
+
+		for (Bedroom bedroom : bedrooms) {
+			bedroomResponses.add(BedroomResponse.builder()
+					.bedroomId(bedroom.getId())
+					.number(bedroom.getNumber())
+					.roomType(bedroom.getRoomType())
+					.capacity(bedroom.getCapacity())
+					.dailyRate(bedroom.getDailyRate())
+					.description(bedroom.getDescription())
+					.available(bedroom.getAvailable())
+					.hotelId(bedroom.getHotelId())
+					.build());
 		}
 
-		return bedroomRepository.save(bedroom);
+		return bedroomResponses;
 
 	}
 
-	private void validateBedroom(Bedroom bedroom) throws ConflictException {
-		if (bedroom.getNumber() == null || bedroom.getNumber() < 1 || bedroom.getNumber() > 5) {
-			log.error("Invalid bedroom number. Number must be between 1 and 5.");
-			throw new ConflictException();
-		}
+	// READ - Buscar
+	public BedroomResponse getBedroomById(Long id) {
+
+		Bedroom bedroom = bedroomRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException("Bedroom not found with id :" + id));
+
+		return BedroomResponse.builder()
+				.bedroomId(bedroom.getId())
+				.number(bedroom.getNumber())
+				.roomType(bedroom.getRoomType())
+				.capacity(bedroom.getCapacity())
+				.dailyRate(bedroom.getDailyRate())
+				.description(bedroom.getDescription())
+				.available(bedroom.getAvailable())
+				.hotelId(bedroom.getHotelId())
+				.build();
 	}
 
-	public Bedroom update(Bedroom bedroom) {
-		verifyBedroomExists(bedroom.getId());
-		log.info("Atualizando quarto com ID: {}", bedroom.getId());
-		return bedroomRepository.save(bedroom);
+	// UPDATE - Atualizar
+	public BedroomResponse updateBedroom(Long id, BedroomRequest request) {
+
+		Bedroom bedroom = bedroomRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException("Bedroom not found with id :" + id));
+
+		bedroom.setNumber(request.getNumber());
+		bedroom.setRoomType(request.getRoomType());
+		bedroom.setCapacity(request.getCapacity());
+		bedroom.setDailyRate(request.getDailyRate());
+		bedroom.setDescription(request.getDescription());
+		bedroom.setAvailable(request.getAvailable());
+		bedroom.setHotelId(request.getHotelId());
+
+		bedroom = bedroomRepository.save(bedroom);
+
+		return BedroomResponse.builder()
+				.bedroomId(bedroom.getId())
+				.number(bedroom.getNumber())
+				.roomType(bedroom.getRoomType())
+				.capacity(bedroom.getCapacity())
+				.dailyRate(bedroom.getDailyRate())
+				.description(bedroom.getDescription())
+				.available(bedroom.getAvailable())
+				.hotelId(bedroom.getHotelId())
+				.build();
 	}
 
-	public Bedroom findById(Long id) {
-		return bedroomRepository.findById(id)
-				.orElseThrow(() -> {
-					log.error("Quarto não encontrado com o ID: {}", id);
-					return new NotFoundException();
-				});
-	}
-
-	public List<Bedroom> findAll() {
-		log.info("Buscando todos os quartos");
-		return bedroomRepository.findAll();
-	}
-
-	public void delete(Long id) {
-		verifyBedroomExists(id);
-		log.info("Excluindo quarto com ID: {}", id);
-		bedroomRepository.deleteById(id);
-	}
-
-//	public List<Bedroom> findByType(RoomType roomType) {
-//		log.info("Buscando quartos pelo tipo: {}", roomType);
-//		return bedroomRepository.findByTipo(roomType);
-//	}
-
-//	public List<Bedroom> findByAvailableDate(LocalDateTime date) {
-//		log.info("Buscando quartos disponíveis a partir da data: {}", date);
-//		return bedroomRepository.findByDataDisponivelAfter(date);
-//	}
-//
-//	public List<Bedroom> findByDailyRate(BigDecimal value) {
-//		log.info("Buscando quartos com diária menor que: {}", value);
-//		return bedroomRepository.findByValorDiariaLessThan(value);
-//	}
-
-	private void verifyBedroomExists(Long id) {
-		if (!bedroomRepository.existsById(id)) {
-			log.error("Quarto não encontrado com o ID: {}", id);
-			throw new NotFoundException();
-		}
-	}
-
-	public void quartoDisponivel() {
-
-	}
-
-	public void quartoIndisponivel() {
-
-	}
-
-	public void verificarNumberAndHotelId(Integer number, Long hotelId) {
-		bedroomRepository.findByNumberAndHotelId(number, hotelId);
-
-	}
-
-	public Bedroom verificarId(Long bedroomId) {
-		return bedroomRepository.findById(bedroomId)
-				.orElseThrow(NotFoundException::new);
+	// DELETE - Excluir
+	public void deleteBedroom(Long id) {
+		Bedroom bedroom = bedroomRepository.findById(id)
+				.orElseThrow(() -> new NotFoundException("Bedroom not found with id :" + id));
+		bedroomRepository.delete(bedroom);
 	}
 
 }

@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.core.security;
+package br.com.hotel.booknow.core.security.config;
 
 public class BookNowSecurityConfig {
 }

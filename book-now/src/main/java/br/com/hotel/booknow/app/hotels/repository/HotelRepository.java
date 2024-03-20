@@ -1,7 +1,7 @@
-package br.com.hotel.booknow.hotels.repository;
+package br.com.hotel.booknow.app.hotels.repository;
 
-import br.com.hotel.booknow.hotels.domain.entity.Hotel;
-import br.com.hotel.booknow.hotels.domain.entity.HotelType;
+import br.com.hotel.booknow.app.hotels.domain.entity.Hotel;
+import br.com.hotel.booknow.app.hotels.domain.entity.HotelType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -25,4 +25,5 @@ public interface HotelRepository extends JpaRepository<Hotel, Long> {
 
 	List<Hotel> findByEmailContainingIgnoreCase(String email);
 
+	boolean existsByEmail(String email);
 }

@@ -1,8 +1,8 @@
-package br.com.hotel.booknow.exceptions.handler;
+package br.com.hotel.booknow.core.exceptions.handler;
 
-import br.com.hotel.booknow.exceptions.dto.ErrorCode;
-import br.com.hotel.booknow.exceptions.dto.ErrorResponse;
-import br.com.hotel.booknow.exceptions.errors.*;
+import br.com.hotel.booknow.core.exceptions.dto.ErrorCode;
+import br.com.hotel.booknow.core.exceptions.dto.ErrorResponse;
+import br.com.hotel.booknow.core.exceptions.errors.*;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.users;
+package br.com.hotel.booknow.app.users.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

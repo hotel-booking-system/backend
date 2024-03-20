@@ -1,7 +1,8 @@
-package br.com.hotel.booknow.bedrooms.controller;
+package br.com.hotel.booknow.app.bedrooms.controller;
 
-import br.com.hotel.booknow.bedrooms.domain.Bedroom;
-import br.com.hotel.booknow.bedrooms.service.BedroomService;
+import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomRequest;
+import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomResponse;
+import br.com.hotel.booknow.app.bedrooms.service.BedroomService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,49 +17,35 @@ public class BedroomController {
 
 	private final BedroomService bedroomService;
 
-	@PostMapping("/register")
-	public ResponseEntity<Bedroom> registerBedroom(@RequestBody Bedroom bedroom) {
-		Bedroom savedBedroom = bedroomService.saveBedroom(bedroom);
-		return ResponseEntity.status(HttpStatus.CREATED).body(savedBedroom);
+	@PostMapping
+	public ResponseEntity<BedroomResponse> createBedroom(@RequestBody BedroomRequest bedroomRequest) {
+		BedroomResponse bedroomResponse = bedroomService.createBedroom(bedroomRequest);
+		return new ResponseEntity<>(bedroomResponse, HttpStatus.CREATED);
 	}
 
-	@PutMapping
-	public ResponseEntity<Bedroom> atualizar(@RequestBody Bedroom bedroom) {
-		Bedroom response = bedroomService.update(bedroom);
-		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);
+	@GetMapping
+	public ResponseEntity<List<BedroomResponse>> getAllBedrooms() {
+		List<BedroomResponse> bedroomResponses = bedroomService.getAllBedrooms();
+		return new ResponseEntity<>(bedroomResponses, HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Bedroom> buscarPorId(@PathVariable Long id) {
-		Bedroom response = bedroomService.findById(id);
-		return ResponseEntity.status(HttpStatus.OK).body(response);
+	public ResponseEntity<BedroomResponse> getBedroomById(@PathVariable(name = "id") Long id) {
+		BedroomResponse bedroomResponse = bedroomService.getBedroomById(id);
+		return new ResponseEntity<>(bedroomResponse, HttpStatus.OK);
 	}
 
-	@GetMapping("/list")
-	public ResponseEntity<List<Bedroom>> buscarTodos() {
-		List<Bedroom> response = bedroomService.findAll();
-		return ResponseEntity.status(HttpStatus.OK).body(response);
+	@PutMapping("/{id}")
+	public ResponseEntity<BedroomResponse> updateBedroom(@PathVariable(name = "id") Long id,
+														 @RequestBody BedroomRequest bedroomRequest) {
+		BedroomResponse bedroomResponse = bedroomService.updateBedroom(id, bedroomRequest);
+		return new ResponseEntity<>(bedroomResponse, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> excluir(@PathVariable Long id) {
-		bedroomService.delete(id);
-		return ResponseEntity.ok("Bedroom with ID " + id + " deleted successfully.");
+	public ResponseEntity<Void> deleteBedroom(@PathVariable(name = "id") Long id) {
+		bedroomService.deleteBedroom(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-
-//	@GetMapping("/tipo")
-//	public ResponseEntity<List<Bedroom>> buscarPorTipo(@RequestParam RoomType roomType) {
-//		return ResponseEntity.ok(bedroomService.findByType(roomType));
-//	}
-
-//	@GetMapping("/data-disponivel")
-//	public ResponseEntity<List<Bedroom>> buscarPorDataDisponivel(@RequestParam LocalDateTime data) {
-//		return ResponseEntity.ok(bedroomService.findByAvailableDate(data));
-//	}
-
-//	@GetMapping("/valor")
-//	public ResponseEntity<List<Bedroom>> buscarPorValorDiaria(@RequestParam BigDecimal valor) {
-//		return ResponseEntity.ok(bedroomService.findByDailyRate(valor));
-//	}
 
 }

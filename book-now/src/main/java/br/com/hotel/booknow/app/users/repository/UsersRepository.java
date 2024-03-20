@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.users;
+package br.com.hotel.booknow.app.users.repository;
 
 public interface UsersRepository {
 }
