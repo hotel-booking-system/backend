@@ -1,3 +1,14 @@
-### get bedrooms
-GET /api/hotel/bedrooms HTTP/1.1
-Host: localhost:8888
+### Cadastrar novo quarto
+# @name cadastrar quarto
+POST http://localhost:8888/api/hotel/bedrooms/register
+Content-Type: application/json
+
+{
+  "number": "101",
+  "roomType": "SOLTEIRO",
+  "capacity": 1,
+  "dailyRate": 120.50,
+  "description": "Quarto individual com vista para a cidade.",
+  "available": true,
+  "hotelId": 1
+}

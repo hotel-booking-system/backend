@@ -10,8 +10,8 @@ Content-Type: application/json
   "email": "contato@hotelnaconchego.com",
   "hotelType": "HOTEL",
   "cnpjNumber": "01040428000120",
-  "description": "Exemplo Descrição",
-  "roomCount": 10
+  "description": "Hotel com piscina, sauna e restaurante.",
+  "roomCount": 100
 }
 
 ### Atualizar dados do Hotel por ID
@@ -25,8 +25,8 @@ Content-Type: application/json
   "phoneNumber": "+11987654321",
   "email": "contato@hotelnaconchego.com",
   "hotelType": "RESORT",
-  "description": "Exemplo Descrição",
-  "roomCount": 10
+  "description": "Hotel com piscina, sauna e restaurante.",
+  "roomCount": 100
 }
 
 ### Buscar Hotel por ID

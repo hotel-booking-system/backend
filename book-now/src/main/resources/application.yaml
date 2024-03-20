@@ -17,7 +17,18 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: update
-
+#  docker:
+#    compose:
+#      enable: true # Se o suporte do docker compose está habilitado.
+#      file: '' # Caminho para um arquivo de configuração específico do Docker Compose.
+#      host: '' # Nome do host ou IP da máquina onde os contêineres do Docker são iniciados.
+#      lifecycle-management: start-and-stop # Docker compõe o gerenciamento do ciclo de vida.
+#      profiles:
+#        active: '' # Docker compõe perfis que devem estar ativos.
+#      skip:
+#        in-tests: true # Se deve pular os testes.
+#      start:
+#        log-level: info # Nível de log para saída.
 logging:
   level:
     web: DEBUG
