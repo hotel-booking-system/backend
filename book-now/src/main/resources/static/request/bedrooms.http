@@ -1,14 +1,42 @@
 ### Cadastrar novo quarto
 # @name cadastrar quarto
-POST http://localhost:8888/api/hotel/bedrooms/register
+POST http://localhost:8585/api/v1/bedrooms/register
+Content-Type: application/json
+
+{
+  "number": "102",
+  "roomType": "DOUBLE",
+  "capacity": 2,
+  "dailyRate": 150.00,
+  "description": "Quarto de casal com vista para o jardim.",
+  "available": false,
+  "hotelId": 1
+}
+
+### Cadastrar novo quarto
+# @name atualizar quarto
+PUT http://localhost:8585/api/v1/bedrooms/{id}
 Content-Type: application/json
 
 {
   "number": "101",
-  "roomType": "SOLTEIRO",
+  "roomType": "SINGLE",
   "capacity": 1,
   "dailyRate": 120.50,
   "description": "Quarto individual com vista para a cidade.",
   "available": true,
   "hotelId": 1
 }
+
+### Buscar Hotel por ID
+# @name Buscar quarto por ID
+GET http://localhost:8585/api/v1/bedrooms/1
+
+### Listar todos os hotéis
+# @name Listar todos os quartos
+GET http://localhost:8585/api/v1/bedrooms/list
+
+### Excluir Hotel por ID
+# @name Excluir quarto
+DELETE http://localhost:8585/api/v1/bedrooms/{id}
+

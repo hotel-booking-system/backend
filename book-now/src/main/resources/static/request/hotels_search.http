@@ -1,77 +1,77 @@
 ### Buscar Hotel por Nome
 # @name Buscar Hotel por Nome
-GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego
+GET http://localhost:8585/api/v1/hotels/search?name=Hotel Aconchego
 Content-Type: application/json
 
 ### Buscar Hotel CNPJ
 # @name Buscar Hotel CNPJ
-GET http://localhost:8888/api/hotel/hotels/search?cnpj=
+GET http://localhost:8585/api/v1/hotels/search?cnpj=
 Content-Type: application/json
 
 ### Buscar Hotel por Email
 # @name Buscar Hotel por Email
-GET http://localhost:8888/api/hotel/hotels/search?email=contato@hotelnaconchego.com
+GET http://localhost:8585/api/v1/hotels/search?email=contato@hotelnaconchego.com
 Content-Type: application/json
 
 ### Buscar Hotel por HotelType
 # @name Buscar Hotel por HotelType
-GET http://localhost:8888/api/hotel/hotels/search?hotelType=RESORT
+GET http://localhost:8585/api/v1/hotels/search?hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por Nome e CNPJ
 # @name Buscar Hotel por Nome e CNPJ
-GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&cnpj=01040428000120
+GET http://localhost:8585/api/v1/hotels/search?name=Hotel Aconchego&cnpj=01040428000120
 Content-Type: application/json
 
 ### Buscar Hotel por Nome e Email
 # @name Buscar Hotel por Nome e Email
-GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&email=contato@hotelnaconchego.com
+GET http://localhost:8585/api/v1/hotels/search?name=Hotel Aconchego&email=contato@hotelnaconchego.com
 Content-Type: application/json
 
 ### Buscar Hotel por Nome e HotelType
 # @name Buscar Hotel por Nome e HotelType
-GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&hotelType=RESORT
+GET http://localhost:8585/api/v1/hotels/search?name=Hotel Aconchego&hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por CNPJ e Email
 # @name Buscar Hotel por CNPJ e Email
-GET http://localhost:8888/api/hotel/hotels/search?cnpj=01040428000120&email=contato@hotelnaconchego.com
+GET http://localhost:8585/api/v1/hotels/search?cnpj=01040428000120&email=contato@hotelnaconchego.com
 Content-Type: application/json
 
 ### Buscar Hotel por CNPJ e HotelType
 # @name Buscar Hotel por CNPJ e HotelType
-GET http://localhost:8888/api/hotel/hotels/search?cnpj=01040428000120&hotelType=RESORT
+GET http://localhost:8585/api/v1/hotels/search?cnpj=01040428000120&hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por Email e HotelType
 # @name Buscar Hotel por Email e HotelType
-GET http://localhost:8888/api/hotel/hotels/search?email=contato@hotelnaconchego.com&hotelType=RESORT
+GET http://localhost:8585/api/v1/hotels/search?email=contato@hotelnaconchego.com&hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por Nome, CNPJ e Email
 # @name Buscar Hotel por Nome, CNPJ e Email
-GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&cnpj=01040428000120&
+GET http://localhost:8585/api/v1/hotels/search?name=Hotel Aconchego&cnpj=01040428000120&
     email=contato@hotelnaconchego.com
 Content-Type: application/json
 
 ### Buscar Hotel por Nome, CNPJ e HotelType
 # @name Buscar Hotel por Nome, CNPJ e HotelType
-GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&cnpj=01040428000120&hotelType=
+GET http://localhost:8585/api/v1/hotels/search?name=Hotel Aconchego&cnpj=01040428000120&hotelType=
 Content-Type: application/json
 
 ### Buscar Hotel por CNPJ, Email e HotelType
 # @name Buscar Hotel por CNPJ, Email e HotelType
-GET http://localhost:8888/api/hotel/hotels/search?cnpj=01040428000120&email=contato@hotelnaconchego.com&hotelType=RESORT
+GET http://localhost:8585/api/v1/hotels/search?cnpj=01040428000120&email=contato@hotelnaconchego.com&hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por Nome, Email e HotelType
 # @name Buscar Hotel por Nome, Email e HotelType
-GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&email=contato@hotelnaconchego.com&
+GET http://localhost:8585/api/v1/hotels/search?name=Hotel Aconchego&email=contato@hotelnaconchego.com&
     hotelType=RESORT
 Content-Type: application/json
 
 ### Buscar Hotel por Nome, CNPJ, Email e HotelType
 # @name Buscar Hotel por Nome, CNPJ, Email e HotelType
-GET http://localhost:8888/api/hotel/hotels/search?name=Hotel Aconchego&cnpj=01040428000120&
+GET http://localhost:8585/api/v1/hotels/search?name=Hotel Aconchego&cnpj=01040428000120&
     email=contato@hotelnaconchego.com&hotelType=RESORT
 Content-Type: application/json

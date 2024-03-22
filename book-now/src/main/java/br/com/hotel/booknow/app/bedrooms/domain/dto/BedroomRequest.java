@@ -1,6 +1,6 @@
 package br.com.hotel.booknow.app.bedrooms.domain.dto;
 
-import br.com.hotel.booknow.app.bedrooms.domain.RoomType;
+import br.com.hotel.booknow.app.bedrooms.domain.entity.RoomType;
 import lombok.*;
 
 import java.math.BigDecimal;

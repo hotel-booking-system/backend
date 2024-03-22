@@ -1,5 +1,8 @@
 package br.com.hotel.booknow.core.exceptions.errors;
 
+/**
+ * <b>HTTP Status 400 - Bad Request</b>
+ */
 public class BadRequestException extends RuntimeException {
 
 	public BadRequestException() {

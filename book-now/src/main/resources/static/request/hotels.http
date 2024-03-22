@@ -1,6 +1,6 @@
 ### Cadastrar novo Hotel
 # @name Cadastrar novo Hotel
-POST http://localhost:8888/api/hotel/hotels/create
+POST http://localhost:8585/api/v1/hotels/create
 Content-Type: application/json
 
 {
@@ -16,7 +16,7 @@ Content-Type: application/json
 
 ### Atualizar dados do Hotel por ID
 # @name Atualizar dados do Hotel
-PUT http://localhost:8888/api/hotel/hotels/{id}
+PUT http://localhost:8585/api/v1/hotels/{id}
 Content-Type: application/json
 
 {
@@ -31,15 +31,15 @@ Content-Type: application/json
 
 ### Buscar Hotel por ID
 # @name Buscar Hotel por ID
-GET http://localhost:8888/api/hotel/hotels/{id}
+GET http://localhost:8585/api/v1/hotels/{id}
 
 ### Listar todos os hotéis
 # @name Listar todos os hotéis
-GET http://localhost:8888/api/hotel/hotels/list
+GET http://localhost:8585/api/v1/hotels/list
 
 ### Excluir Hotel por ID
 # @name Excluir Hotel
-DELETE http://localhost:8888/api/hotel/hotels/{id}
+DELETE http://localhost:8585/api/v1/hotels/{id}
 
 
 

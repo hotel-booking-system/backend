@@ -1,5 +1,6 @@
 package br.com.hotel.booknow.app.hotels.controller;
 
+import br.com.hotel.booknow.app.hotels.domain.dto.response.HotelResponse;
 import br.com.hotel.booknow.app.hotels.domain.entity.Hotel;
 import br.com.hotel.booknow.app.hotels.domain.entity.HotelType;
 import br.com.hotel.booknow.app.hotels.service.HotelService;
@@ -45,10 +46,10 @@ public class HotelController {
 	 *
 	 * @return Hotel atualizado persistido no banco de dados.
 	 */
-	@PutMapping("/{id}")
-	public ResponseEntity<Hotel> updateHotel(@PathVariable(name = "id") Long id,
+	@PutMapping("/{hotelsId}")
+	public ResponseEntity<Hotel> updateHotel(@PathVariable(name = "hotelsId") Long hotelsId,
 											 @RequestBody Hotel hotel) {
-		Hotel updatedHotel = hotelService.updateHotel(id, hotel);
+		Hotel updatedHotel = hotelService.updateHotel(hotelsId, hotel);
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).body(updatedHotel);
 	}
 
@@ -87,9 +88,9 @@ public class HotelController {
 	 *
 	 * @return Hotel encontrado, ou lança uma exceção caso não seja encontrado.
 	 */
-	@GetMapping("/{id}")
-	public ResponseEntity<Hotel> findHotelById(@PathVariable(name = "id") Long id) {
-		Hotel hotel = hotelService.findHotelById(id);
+	@GetMapping("/{hotelId}")
+	public ResponseEntity<Hotel> findHotelById(@PathVariable(name = "hotelId") Long hotelId) {
+		Hotel hotel = hotelService.findHotelById(hotelId);
 		return ResponseEntity.ok(hotel);
 	}
 
@@ -110,10 +111,15 @@ public class HotelController {
 	 * @param id
 	 * 		Identificador único do hotel.
 	 */
-	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteHotel(@PathVariable(name = "id") Long id) {
-		hotelService.deleteHotel(id);
-		return ResponseEntity.ok("Hotel with ID " + id + " deleted successfully.");
+	@DeleteMapping("/{hotelsId}")
+	public ResponseEntity<String> deleteHotel(@PathVariable(name = "hotelsId") Long hotelsId) {
+		hotelService.deleteHotel(hotelsId);
+		return ResponseEntity.ok("Hotel with ID " + hotelsId + " deleted successfully.");
+	}
+
+	@GetMapping("/{id}/bedrooms")
+	public ResponseEntity<HotelResponse> listHotelWithBedroom(@PathVariable Long id) {
+		return ResponseEntity.ok(hotelService.listHotel(id));
 	}
 
 }

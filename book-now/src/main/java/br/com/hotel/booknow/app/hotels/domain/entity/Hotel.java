@@ -1,7 +1,10 @@
 package br.com.hotel.booknow.app.hotels.domain.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -48,11 +51,15 @@ public class Hotel {
 	/**
 	 * <b>Número de telefone do hotel</b>
 	 * <p>
-	 * Não pode ser vazio nem conter apenas espaços em branco <br> O número de telefone deve ter no mínimo 4 e no máximo
-	 * 15 caracteres. <br> O sinal + é opcional. <br> O número de telefone deve seguir o padrão +XXXXXXXXXXXXX ou
-	 * XXXXXXXXXXXXXX ou +XXX ou XXXX <br> Não nulo.
+	 * Não pode ser vazio nem conter apenas espaços em branco <br> O número de telefone deve ter no mínimo 1 e no máximo
+	 * 15 caracteres. <br> O sinal + é opcional. <br> O valor do phoneNumber precisa estar no formato E.164. <br> Não
+	 * nulo.
+	 * <p>
+	 * <b>Obs.:</b> O formato E.164 é um padrão internacional para a formatação de números de telefone. Ele garante que
+	 * cada dispositivo na rede telefônica pública comutada (PSTN) tenha um número único globalmente.
 	 */
-	@Pattern(regexp = "^\\+?\\d{4,15}$")
+	@Pattern(regexp = "^\\+?[1-9]\\d{1,15}$",
+			message = "O valor do phoneNumber precisa estar no formato E.164.")
 	@Column(nullable = false)
 	private String phoneNumber;
 

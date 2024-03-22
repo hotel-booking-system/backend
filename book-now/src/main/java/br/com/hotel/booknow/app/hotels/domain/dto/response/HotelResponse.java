@@ -1,9 +1,11 @@
 package br.com.hotel.booknow.app.hotels.domain.dto.response;
 
+import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomResponse;
 import br.com.hotel.booknow.app.hotels.domain.entity.HotelType;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,5 +25,6 @@ public class HotelResponse {
 	private Integer roomCount;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
+	private List<BedroomResponse> bedrooms;
 
 }

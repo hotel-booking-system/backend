@@ -1,14 +1,18 @@
 package br.com.hotel.booknow.app.hotels.service;
 
+import br.com.hotel.booknow.app.bedrooms.domain.entity.Bedroom;
+import br.com.hotel.booknow.app.bedrooms.repository.BedroomRepository;
+import br.com.hotel.booknow.app.hotels.domain.dto.response.HotelResponse;
+import br.com.hotel.booknow.app.hotels.domain.entity.Hotel;
 import br.com.hotel.booknow.app.hotels.domain.entity.HotelType;
+import br.com.hotel.booknow.app.hotels.domain.mapper.HotelMapper;
 import br.com.hotel.booknow.app.hotels.repository.HotelRepository;
+import br.com.hotel.booknow.app.hotels.validator.HotelValidator;
 import br.com.hotel.booknow.core.exceptions.errors.BadRequestException;
 import br.com.hotel.booknow.core.exceptions.errors.ConflictException;
 import br.com.hotel.booknow.core.exceptions.errors.NotFoundException;
 import br.com.hotel.booknow.core.exceptions.errors.ServerErrorException;
-import br.com.hotel.booknow.app.hotels.domain.entity.Hotel;
-import br.com.hotel.booknow.app.hotels.validator.HotelValidator;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,6 +21,7 @@ import org.springframework.util.StringUtils;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author juliane.maran
@@ -24,8 +29,10 @@ import java.util.List;
  */
 @Slf4j
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class HotelService {
+
+	private final BedroomRepository bedroomRepository;
 
 	/**
 	 * Repositório para acesso aos dados do Hotel.
@@ -35,6 +42,8 @@ public class HotelService {
 	 * Validador de dados de Hotéis.
 	 */
 	private final HotelValidator hotelValidator;
+
+	private final HotelMapper hotelMapper;
 
 	/**
 	 * <b>Cria um novo Hotel.</b>
@@ -240,9 +249,14 @@ public class HotelService {
 
 	}
 
-	public Hotel verificarId(Long hotelId) {
-		return hotelRepository.findById(hotelId)
-				.orElseThrow(NotFoundException::new);
+	public HotelResponse listHotel(Long id) {
+		Hotel hotel = hotelRepository.findById(id).orElseThrow(NotFoundException::new);
+		List<Bedroom> bedrooms = bedroomRepository.findAllByHotelId(hotel.getId());
+		HotelResponse response = hotelMapper.toHotelResponse(hotel);
+		response.setBedrooms(bedrooms.stream()
+				.map(hotelMapper::toBedroomResponse)
+				.collect(Collectors.toList()));
+		return response;
 	}
 
 }

@@ -1,8 +1,9 @@
 package br.com.hotel.booknow.app.bedrooms.service;
 
-import br.com.hotel.booknow.app.bedrooms.domain.Bedroom;
 import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomRequest;
 import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomResponse;
+import br.com.hotel.booknow.app.bedrooms.domain.entity.Bedroom;
+import br.com.hotel.booknow.app.bedrooms.domain.mapper.BedroomMapper;
 import br.com.hotel.booknow.app.bedrooms.repository.BedroomRepository;
 import br.com.hotel.booknow.core.exceptions.errors.NotFoundException;
 import lombok.AllArgsConstructor;
@@ -19,32 +20,15 @@ public class BedroomService {
 
 	private final BedroomRepository bedroomRepository;
 
+	private final BedroomMapper bedroomMapper;
+
+//	private final BedroomClient bedroomClient;
+
 	// CREATE
 	public BedroomResponse createBedroom(BedroomRequest request) {
-
-		Bedroom bedroom = Bedroom.builder()
-				.number(request.getNumber())
-				.roomType(request.getRoomType())
-				.capacity(request.getCapacity())
-				.dailyRate(request.getDailyRate())
-				.description(request.getDescription())
-				.available(request.getAvailable())
-				.hotelId(request.getHotelId())
-				.build();
-
-		bedroom = bedroomRepository.save(bedroom);
-
-		return BedroomResponse.builder()
-				.bedroomId(bedroom.getId())
-				.number(bedroom.getNumber())
-				.roomType(bedroom.getRoomType())
-				.capacity(bedroom.getCapacity())
-				.dailyRate(bedroom.getDailyRate())
-				.description(bedroom.getDescription())
-				.available(bedroom.getAvailable())
-				.hotelId(bedroom.getHotelId())
-				.build();
-
+		Bedroom bedroom = bedroomMapper.toBedroom(request);
+		bedroomRepository.save(bedroom);
+		return bedroomMapper.toBedroomResponse(bedroom);
 	}
 
 	// READ - Listar
@@ -122,5 +106,10 @@ public class BedroomService {
 				.orElseThrow(() -> new NotFoundException("Bedroom not found with id :" + id));
 		bedroomRepository.delete(bedroom);
 	}
+
+//	public List<BedroomResponse> listByHotelId(Long hotelId) {
+//		return bedroomClient.listByHotelId(hotelId);
+//	}
+
 
 }

@@ -1,7 +1,7 @@
 package br.com.hotel.booknow.app.hotels.domain.entity;
 
 /**
- * Enum que define os tipos de hotéis.
+ * <b>Enum que define os tipos de hotéis.</b>
  *
  * @author juliane.maran
  * @since 19-03-2024
@@ -9,20 +9,46 @@ package br.com.hotel.booknow.app.hotels.domain.entity;
 public enum HotelType {
 
 	/**
-	 * Hotel tradicional
+	 * <b>Hotel Tradicional</b>
+	 *
+	 * <p>
+	 * PT: HOTEL
+	 * <p>
+	 * EN: HOTEL
 	 */
 	HOTEL,
 	/**
-	 * Resort com diversas opções de lazer.
+	 * <b>Resort com diversas opções de lazer.</b>
+	 *
+	 * <p>
+	 * PT: RESORT
+	 * <p>
+	 * EN: RESORT
 	 */
 	RESORT,
 	/**
-	 * Alojamento com baixo custo e ambiente informal.
+	 * <b>Alojamento com baixo custo e ambiente informal.</b>
+	 * <p>
+	 * PT: HOSTEL
+	 * <p>
+	 * EN: HOSTEL
 	 */
 	HOSTEL,
 	/**
-	 * Pousada com clima familiar e aconchegante.
+	 * <b>Pousada com clima familiar e aconchegante.</b>
+	 * <p>
+	 * PT: POUSADA
+	 * <p>
+	 * EN: GUESTHOUSE
 	 */
-	POUSADA
+	GUESTHOUSE,
+	/**
+	 * <b>Hotel Fazenda</b>
+	 * <p>
+	 * PT: HOTEL_FAZENDA
+	 * <p>
+	 * EN: FARMSTAY
+	 */
+	FARMSTAY
 
 }

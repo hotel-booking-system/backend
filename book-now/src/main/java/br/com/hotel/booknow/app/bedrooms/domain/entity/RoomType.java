@@ -1,7 +1,10 @@
-package br.com.hotel.booknow.app.bedrooms.domain;
+package br.com.hotel.booknow.app.bedrooms.domain.entity;
 
 /**
- * <b>Tipos de Quartos - Enum</b>
+ * <b>Enum que define os tipos de quartos.</b>
+ *
+ * @author juliane.maran
+ * @since 19-03-2024
  */
 public enum RoomType {
 
@@ -12,7 +15,7 @@ public enum RoomType {
 	 * <p>
 	 * EN: SINGLE
 	 */
-	SOLTEIRO,
+	SINGLE,
 	/**
 	 * <b>Quarto de casal</b>
 	 * <p>
@@ -20,7 +23,7 @@ public enum RoomType {
 	 * <p>
 	 * EN: DOUBLE
 	 */
-	CASAL,
+	DOUBLE,
 	/**
 	 * <b>Quarto familiar</b>
 	 * <p>
@@ -28,7 +31,7 @@ public enum RoomType {
 	 * <p>
 	 * EN: FAMILY
 	 */
-	FAMILIA,
+	FAMILY,
 	/**
 	 * <b>Quarto de Luxo</b>
 	 * <p>
@@ -36,6 +39,6 @@ public enum RoomType {
 	 * <p>
 	 * EN: LUXURY
 	 */
-	LUXO
+	LUXURY
 
 }

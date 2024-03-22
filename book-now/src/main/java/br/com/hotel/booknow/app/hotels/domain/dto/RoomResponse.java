@@ -1,19 +1,15 @@
-package br.com.hotel.booknow.app.bedrooms.domain.dto;
+package br.com.hotel.booknow.app.hotels.domain.dto;
 
-import br.com.hotel.booknow.app.bedrooms.domain.entity.RoomType;
 import lombok.*;
 
 import java.math.BigDecimal;
 
-/**
- * Classe responsável por retornar os dados do Quarto
- */
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BedroomResponse {
+public class RoomResponse {
 
 	private Long bedroomId;
 	private String number;
@@ -22,6 +18,5 @@ public class BedroomResponse {
 	private BigDecimal dailyRate;
 	private String description;
 	private Boolean available;
-	private Long hotelId;
 
 }
