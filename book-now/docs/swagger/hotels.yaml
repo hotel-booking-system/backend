@@ -2,74 +2,120 @@ openapi: 3.0.3
 info:
   title: 'API Hotel Booking System'
   description: |-
-    # Gerenciamento de Quartos
+    #  API para gerenciar hotéis em um sistema de reservas.
     
-    **Objetivo:** Esta API fornece recursos para gerenciar quartos em um sistema de reservas de hotéis, incluindo 
-    cadastro, listagem, busca, atualização e exclusão de quartos.
+    ## Objetivo
     
-    ## Recursos:
+    Esta API fornece uma interface para gerenciar hotéis em um sistema de reservas. Ela permite que você realize 
+    operações CRUD (Create, Read, Update, Delete) em hotéis.
     
-    - **Cadastro de Quartos (POST /register):** Permite registrar um novo quarto no sistema. O corpo da requisição 
-    deve conter os dados do quarto, como tipo, número, capacidade, preço, etc.
-    - **Cadastro de Quartos (GET /list):** Retorna uma lista de todos os quartos cadastrados no sistema. A resposta pode
-    ser filtrada por tipo, número, capacidade, preço, etc.
-    - **Cadastro de Quartos (GET /{id}):** Retorna os dados de um quarto específico, identificado pelo seu ID.
-    - **Cadastro de Quartos (PUT /{id}):** Permite atualizar os dados de um quarto existente. O corpo da requisição deve
-    conter os dados atualizados do quarto
-    - **Cadastro de Quartos (DELETE /{id}):** Exclui um quarto do sistema.
+    ## Público-alvo
     
-    ## Códigos de Erro:
+    Desenvolvedores que desejam integrar funcionalidades de gerenciamento de hotéis em seus sistemas de reservas.
     
-    - **200 OK:** Operação realizada com sucesso.
-    - **201 Created:** Quarto cadastrado com sucesso!
-    - **204 No Content:** Operação realizada com sucesso.
-    - **400 Bad Request:** Ops, algo deu errado com sua requisição. Verifique se os dados estão corretos.
-    - **401 Unauthorized:** Você precisa se conectar para acessar este recurso. Faça login ou crie uma conta.
-    - **403 Forbidden:** Você não tem permissão para acessar este recurso. Entre em contato com o administrador para solicitar acesso.
-    - **404 Not Found:** O que você procura não foi encontrado. Verifique se o endereço está correto ou tente buscar por algo diferente.
-    - **409 Conflict**: Este dado já está sendo utilizado. Tente outro ou entre em contato com o suporte.
-    - **500 Internal Server Error:** Ops, estamos com problemas técnicos. Tente novamente mais tarde..
+    ## Recursos
+    
+    - **Listar:** Buscar todos os hotéis cadastrados no sistema.
+    - **Buscar:** Obter informações detalhadas de um hotel específico por meio do seu ID.
+    - **Cadastrar:** Criar um novo hotel no sistema.
+    - **Atualizar:** Editar os dados de um hotel já cadastrado.
+    - **Excluir:** Remover um hotel do sistema.
+    
+    ### Modelo de Dados
+    
+    - `HotelRequest`: Modelo para requisições de criação e atualização de hotéis.
+    - `HotelResponse`: Modelo para resposta com os dados do hotel.
+    - `HotelType`: Enumeração com os tipos de hotéis (HOTEL, RESORT, HOSTEL, etc.).
+    
+    ### Validação de Dados
+    
+    - Validação de campos obrigatórios e formatos de dados.
+    - Verificação de CNPJ e email válidos.
+    
+    ### Respostas padronizadas
+    
+    - Códigos de status HTTP para indicar o sucesso ou falha da operação.
+    - Mensagens de erro descritivas em português.
+    
+    ## Funcionalidades
+    
+    - **Gerenciamento completo de hotéis:** A API oferece endpoints para realizar todas as operações CRUD em hotéis, 
+    permitindo um controle completo sobre os dados dos hotéis no sistema de reservas.
+    - **Detalhes do hotel:** A API fornece informações detalhadas sobre cada hotel, como nome, localização, tipo, 
+    contato, descrição, quantidade de quartos e data de criação/atualização.
+    - **Validação de dados:** A API garante a qualidade dos dados inseridos no sistema, realizando validações de 
+    formato, tamanho e conteúdo para cada campo.
+    - **Respostas em português:** As mensagens de erro e sucesso da API são em português, facilitando a compreensão e o 
+    uso da API por desenvolvedores brasileiros.
+    
+    ## Benefícios
+    
+    - **Agilidade:** A API automatiza o processo de gerenciamento de hotéis, reduzindo o tempo e o esforço manual 
+    necessário para realizar tarefas como cadastro, atualização e exclusão de hotéis.
+    - **Precisão:** A validação de dados garante a qualidade e confiabilidade das informações armazenadas no sistema 
+    de reservas.
+    - **Acessibilidade:** A API oferece uma interface padronizada para acesso aos dados dos hotéis, facilitando a 
+    integração com outros sistemas e aplicações.
+    - **Escalabilidade:** A API é projetada para ser escalável, suportando o aumento no número de hotéis e reservas 
+    no sistema.
+    
+    ## Utilização
+    
+    Esta API pode ser utilizada por desenvolvedores que desejam integrar funcionalidades de gerenciamento de hotéis 
+    em seus sistemas de reservas. A API é fornecida em formato OpenAPI, facilitando a integração com diversas 
+    linguagens de programação e frameworks.
+    
+    ## Recursos Adicionais
+    
+    - **Documentação completa:** A API possui documentação detalhada em português, com exemplos de requisições e 
+    respostas, facilitando o aprendizado e uso da API.
 
   version: 1.0.0
 servers:
-  - url: 'http:localhost:8585/api/v1/bedrooms'
+  - url: 'http:localhost:8585/api/v1/hotels'
 tags:
-  - name: bedroom
-    description: 'Sobre os quartos'
+  - name: hotel
+    description: 'Operações relacionadas a hotéis'
 paths:
   /register:
     post:
       tags:
-        - bedroom
-      summary: 'Cadastrar novo quarto'
-      description: 'Creates a new bedroom with the provided information'
-      operationId: registerBedroom
+        - hotel
+      summary: 'Cadastrar um novo hotel'
+      description: 'Cria um novo hotel no sistema.'
+      operationId: registerHotel
       requestBody:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BedroomRequest'
+              $ref: '#/components/schemas/HotelRequest'
       responses:
         '201':
-          description: 'Bedroom created successfully'
+          description: 'Hotel criado com sucesso.'
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/BedroomResponse'
+                $ref: '#/components/schemas/RegisterHotelResponse'
         '400':
-          description: 'Bad Request'
+          description: 'Erro na requisição.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: 'Acesso não autorizado.'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '409':
-          description: 'Conflict (e.g., bedroom number already exists)'
+          description: 'CNPJ já cadastrado no sistema.'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '500':
-          description: 'Internal Server Error'
+          description: 'Erro interno no servidor.'
           content:
             application/json:
               schema:
@@ -77,10 +123,10 @@ paths:
   /list:
     get:
       tags:
-        - bedroom
-      summary: 'Lista todos os quartos'
-      description: 'Retorna uma lista de todos os quartos cadastrados no sistema'
-      operationId: listBedrooms
+        - hotel
+      summary: 'Lista todos os hotéis cadastrados no sistema.'
+      description: 'Retorna uma lista de objetos `RegisterHotelResponse` com os dados dos hotéis.'
+      operationId: listHotels
       responses:
         '200':
           description: 'Lista de quartos retornada com sucesso'
@@ -89,9 +135,15 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/BedroomResponse'
+                  $ref: '#/components/schemas/RegisterHotelResponse'
+        '404':
+          description: 'Recurso não encontrado.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
-          description: 'Internal Server Error'
+          description: 'Erro interno no servidor.'
           content:
             application/json:
               schema:
@@ -99,49 +151,51 @@ paths:
   /{id}:
     get:
       tags:
-        - bedroom
-      summary: 'Busca um quarto por ID'
-      description: 'Retorna um quarto específico com base no ID fornecido'
-      operationId: getBedroomById
+        - hotel
+      summary: 'Busca um hotel por ID'
+      description: 'Retorna um objeto HotelResponse com os dados do hotel especificado pelo ID.'
+      operationId: getHotelById
       parameters:
         - name: id
           in: path
           required: true
-          description: 'O ID do quarto'
+          description: 'Identificador único do hotel'
           schema:
             type: integer
             format: int64
       responses:
         '200':
-          description: 'Quarto encontrado com sucesso.'
+          description: 'Hotel encontrado com sucesso.'
           content:
             application/json:
               schema:
                 items:
-                  $ref: '#/components/schemas/BedroomResponse'
+                  $ref: '#/components/schemas/RegisterHotelResponse'
         '404':
-          description: 'Quarto não encontrado'
+          description: 'Hotel não encontrado'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '500':
-          description: 'Internal Server Error'
+          description: 'Erro interno no servidor.'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     put:
       tags:
-        - bedroom
+        - hotel
       summary: 'Atualizar um quarto por ID'
-      description: 'Atualiza um quarto específico com base no ID fornecido e nos dados enviados no campo da requisição.'
-      operationId: updateBedroomById
+      description: |-
+        Recebe um objeto `HotelRequest` como payload e atualiza os dados do hotel especificado pelo ID.
+        Retorna um objeto `HotelResponse` com os dados do hotel atualizado.
+      operationId: updateHotelById
       parameters:
         - name: id
           in: path
           required: true
-          description: 'O ID do quarto'
+          description: 'Identificador único do hotel'
           schema:
             type: integer
             format: int64
@@ -149,7 +203,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/BedroomRequest'
+              $ref: '#/components/schemas/HotelRequest'
       responses:
         '204':
           description: 'Quarto atualizado com sucesso.'
@@ -158,7 +212,7 @@ paths:
               schema:
                 type: object
                 items:
-                  $ref: '#/components/schemas/BedroomResponse'
+                  $ref: '#/components/schemas/RegisterHotelResponse'
         '404':
           description: 'Quarto não encontrado'
           content:
@@ -166,109 +220,152 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '500':
-          description: 'Internal Server Error'
+          description: 'Erro interno no servidor.'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     delete:
       tags:
-        - bedroom
+        - hotel
       summary: 'Excluir um quarto por ID'
-      description: 'Exclui um quarto específico com base no ID fornecidos'
-      operationId: deleteBedroomById
+      description: ' Exclui o hotel especificado pelo ID. Retorna um código de status 204 se a exclusão for bem-sucedida.'
+      operationId: deleteHotelById
       parameters:
         - name: id
           in: path
           required: true
-          description: 'O ID do quarto'
+          description: 'Identificador único do hotel'
           schema:
             type: integer
             format: int64
       responses:
         '204':
-          description: 'Quarto excluído com sucesso.'
+          description: 'Hotel excluído com sucesso.'
         '404':
-          description: 'Quarto não encontrado'
+          description: 'Hotel não encontrado'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '500':
-          description: 'Internal Server Error'
+          description: 'Erro interno no servidor.'
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    BedroomRequest:
+    HotelRequest:
       type: object
       required:
-        - number
-        - roomType
-        - capacity
-        - dailyRate
+        - hotelName
+        - location
+        - phoneNumber
+        - email
+        - hotelType
+        - cnpjNumber
         - description
-        - hotelId
+        - roomCount
       properties:
-        number:
+        hotelName:
           type: string
-          minLength: 1
-          maxLength: 10
-          example: 101
-        roomType:
-          $ref: '#/components/schemas/RoomType'
-        capacity:
+          minLength: 3
+          example: "Hotel Atlântico"
+          description: 'Nome do hotel'
+        location:
+          type: string
+          minLength: 10
+          example: "Rua Jaime Rodrigues, 123, Jd Cachoeira"
+          description: 'Localização do hotel'
+        phoneNumber:
+          type: string
+          pattern: "^\\+?\\d{4,15}$"
+          example: "+5511999998888"
+          description: 'Número de telefone do hotel'
+        email:
+          type: string
+          format: email
+          example: "contato@hotelatlantico.com.br"
+          description: 'Email do hotel'
+        hotelType:
+          $ref: '#/components/schemas/HotelType'
+        cnpjNumber:
+          type: string
+          pattern: "^\\d{14}$"
+          example: '33879307000163'
+          description: 'CNPJ do hotel'
+        description:
+          type: string
+          minLength: 3
+          example: 'Hotel à beira mar com piscina e restaurante.'
+          description: 'Descrição do hotel'
+        roomCount:
           type: integer
           minimum: 1
-          maximum: 10
-        dailyRate:
-          type: number
-          format: decimal
-          minimum: 0.01
-          description: 'Decimal value with up to two decimal places'
-          example: 159.99
-        description:
-          type: string
-          minLength: 5
-        available:
-          type: boolean
-          default: true
-        hotelId:
-          type: integer
-          format: int64
-    BedroomResponse:
+          example: 100
+          description: 'Quantidade de quartos do hotel'
+    RegisterHotelResponse:
       type: object
       properties:
-        bedroomId:
+        id:
           type: integer
           format: int64
-        number:
+          example: 1
+          description: 'Identificador único do hotel'
+        hotelName:
           type: string
-        roomType:
-          $ref: '#/components/schemas/RoomType'
-        capacity:
-          type: integer
-        dailyRate:
-          type: number
-          format: decimal
+          example: "Hotel Atlântico"
+          description: 'Nome do hotel'
+        location:
+          type: string
+          example: "Rua Jaime Rodrigues, 123, Jd Cachoeira"
+          description: 'Localização do hotel'
+        phoneNumber:
+          type: string
+          example: "+5511999998888"
+          description: 'Número de telefone do hotel'
+        email:
+          type: string
+          example: "contato@hotelatlantico.com.br"
+          description: 'Email do hotel'
+        hotelType:
+          $ref: '#/components/schemas/HotelType'
+        npjNumber:
+          type: string
+          example: '33879307000163'
+          description: 'CNPJ do hotel'
         description:
           type: string
-        available:
-          type: boolean
-        hotelId:
+          example: 'Hotel à beira mar com piscina e restaurante.'
+          description: 'Descrição do hotel'
+        roomCount:
           type: integer
-          format: int64
-    RoomType:
+          example: 100
+          description: 'Quantidade de quartos do hotel'
+        createdAt:
+          type: string
+          format: date-time
+          example: "2023-11-14T14:00:00Z"
+          description: 'Data de criação do hotel'
+        updatedAt:
+          type: string
+          format: date-time
+          example: "2023-11-14T14:00:00Z"
+          description: 'Data de atualização do hotel'
+    HotelType:
       type: string
+      example: "HOTEL"
+      description: 'Tipo do hotel'
       enum:
-        - SINGLE
-        - DOUBLE
-        - FAMILY
-        - LUXURY
+        - HOTEL
+        - RESORT
+        - HOSTEL
+        - GUESTHOUSE
+        - FARMSTAY
     ErrorResponse:
       type: object
+      description: 'Estrutura geral de resposta a erros'
       properties:
         status:
           type: string
@@ -276,4 +373,3 @@ components:
           type: string
         message:
           type: string
-      description: 'General error response structure'

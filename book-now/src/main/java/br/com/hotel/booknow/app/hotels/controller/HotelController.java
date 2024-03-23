@@ -30,59 +30,15 @@ public class HotelController {
      * @return recém-criado persistido no banco de dados.
      */
     @PostMapping("/create")
-    public ResponseEntity<Hotel> createHotel(@RequestBody Hotel hotel) {
+    public ResponseEntity<Hotel> registerHotel(@RequestBody Hotel hotel) {
         Hotel response = hotelService.createHotel(hotel);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     /**
-     * <b>Atualiza os dados de um hotel existente.</b>
-     *
-     * @param id
-     *         Identificador único do hotel a ser atualizado.
-     * @param hotel
-     *         Objeto Hotel contendo os novos dados do hotel.
-     *
-     * @return Hotel atualizado persistido no banco de dados.
-     */
-    @PutMapping("/{hotelsId}")
-    public ResponseEntity<Hotel> updateHotel(@PathVariable(name = "hotelsId") Long hotelsId,
-                                             @RequestBody Hotel hotel) {
-        Hotel updatedHotel = hotelService.updateHotel(hotelsId, hotel);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(updatedHotel);
-    }
-
-    /**
-     * <b>Busca hotéis de acordo com critérios de pesquisa.</b>
-     *
-     * @param name
-     *         Nome do hotel (opcional). Pesquisa por hotéis que contenham o nome informado.
-     * @param cnpj
-     *         CNPJ do hotel (opcional). Pesquisa por hotéis com o CNPJ exato informado.
-     * @param email
-     *         Email do hotel (opcional). Pesquisa por hotéis com o e-mail exato informado.
-     * @param hotelType
-     *         Tipo de hotel (opcional). Pesquisa por hotéis do tipo informado.
-     *
-     * @return Lista de hotéis que atendem aos critérios de pesquisa.
-     */
-    @GetMapping("/search")
-    public ResponseEntity<List<Hotel>> searchHotel(
-            @RequestParam(required = false, name = "name") String name,
-            @RequestParam(required = false, name = "cnpj") String cnpj,
-            @RequestParam(required = false, name = "email") String email,
-            @RequestParam(required = false, name = "type") HotelType type) {
-
-        List<Hotel> response = hotelService.searchHotel(name, cnpj, email, type);
-
-        return ResponseEntity.status(HttpStatus.OK).body(response);
-
-    }
-
-    /**
      * <b>Busca um hotel por ID.</b>
      *
-     * @param id
+     * @param hotelId
      *         Identificador único do hotel.
      *
      * @return Hotel encontrado, ou lança uma exceção caso não seja encontrado.
@@ -105,15 +61,59 @@ public class HotelController {
     }
 
     /**
+     * <b>Atualiza os dados de um hotel existente.</b>
+     *
+     * @param hotelsId
+     *         Identificador único do hotel a ser atualizado.
+     * @param hotel
+     *         Objeto Hotel contendo os novos dados do hotel.
+     *
+     * @return Hotel atualizado persistido no banco de dados.
+     */
+    @PutMapping("/{hotelsId}")
+    public ResponseEntity<Hotel> updateHotelById(@PathVariable(name = "hotelsId") Long hotelsId,
+                                                 @RequestBody Hotel hotel) {
+        Hotel updatedHotel = hotelService.updateHotel(hotelsId, hotel);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(updatedHotel);
+    }
+
+    /**
      * <b>Exclui um hotel por ID.</b>
      *
-     * @param id
+     * @param hotelsId
      *         Identificador único do hotel.
      */
     @DeleteMapping("/{hotelsId}")
-    public ResponseEntity<String> deleteHotel(@PathVariable(name = "hotelsId") Long hotelsId) {
+    public ResponseEntity<String> deleteHotelById(@PathVariable(name = "hotelsId") Long hotelsId) {
         hotelService.deleteHotel(hotelsId);
         return ResponseEntity.ok("Hotel with ID " + hotelsId + " deleted successfully.");
+    }
+
+    /**
+     * <b>Busca hotéis de acordo com critérios de pesquisa.</b>
+     *
+     * @param name
+     *         Nome do hotel (opcional). Pesquisa por hotéis que contenham o nome informado.
+     * @param cnpj
+     *         CNPJ do hotel (opcional). Pesquisa por hotéis com o CNPJ exato informado.
+     * @param email
+     *         Email do hotel (opcional). Pesquisa por hotéis com o e-mail exato informado.
+     * @param type
+     *         Tipo de hotel (opcional). Pesquisa por hotéis do tipo informado.
+     *
+     * @return Lista de hotéis que atendem aos critérios de pesquisa.
+     */
+    @GetMapping("/search")
+    public ResponseEntity<List<Hotel>> searchHotel(
+            @RequestParam(required = false, name = "name") String name,
+            @RequestParam(required = false, name = "cnpj") String cnpj,
+            @RequestParam(required = false, name = "email") String email,
+            @RequestParam(required = false, name = "type") HotelType type) {
+
+        List<Hotel> response = hotelService.searchHotel(name, cnpj, email, type);
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+
     }
 
 }
