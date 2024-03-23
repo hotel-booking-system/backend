@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.app.login;
+package br.com.hotel.booknow.app.login.controller;
 
 public class LoginController {
 }

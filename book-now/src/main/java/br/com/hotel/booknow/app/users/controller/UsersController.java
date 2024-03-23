@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Tag(name = "Users", description = "Endpoints relacionados ao Usuário")
+@Tag(name = "users", description = "Operações relacionadas a usuários")
 @RestController
 @RequestMapping(value = "/users")
 @AllArgsConstructor

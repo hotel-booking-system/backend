@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.app.login.entity;
+package br.com.hotel.booknow.app.login.domain;
 
 import lombok.*;
 

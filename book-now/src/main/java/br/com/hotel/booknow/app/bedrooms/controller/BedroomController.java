@@ -21,7 +21,7 @@ import java.util.List;
  * A classe também é anotada com <code>@AllArgsConstructor</code>, que gera automaticamente um construtor com argumentos
  * para todos os atributos privados da classe.
  */
-@Tag(name = "Bedrooms", description = "Endpoints relacionados ao quartos")
+@Tag(name = "bedroom", description = "Operações relacionadas a quartos")
 @RestController
 @RequestMapping(value = "/bedrooms")
 @AllArgsConstructor
@@ -35,12 +35,7 @@ public class BedroomController {
     private final BedroomService bedroomService;
 
     /**
-     * <b>Endpoint para cadastrar um novo quarto.</b>
-     * <p>
-     * Esse método recebe uma requisição <b>POST</b> no caminho <code>/register</code> e espera um objeto
-     * <code>BedroomRequest</code> no corpo da requisição. O método delega a criação do quarto para o serviço
-     * <code>bedroomService</code> e retorna um objeto <code>ResponseEntity</code> com o status <b>CREATED (201)</b> e
-     * o objeto <code>BedroomResponse</code> recém-criado no corpo da resposta.
+     * <b>Cadastrar novo quarto</b>
      *
      * @param bedroomRequest
      *         Objeto contendo os dados do quarto a ser cadastrado.
@@ -48,74 +43,60 @@ public class BedroomController {
      * @return ResponseEntity contendo o objeto BedroomResponse criado e o status da operação.
      */
     @PostMapping("/register")
-    public ResponseEntity<BedroomResponse> registerBedroom(@RequestBody BedroomRequest bedroomRequest) {
-        BedroomResponse bedroomResponse = bedroomService.createBedroom(bedroomRequest);
-        return new ResponseEntity<>(bedroomResponse, HttpStatus.CREATED);
+    public ResponseEntity<BedroomResponse> registerBedroom(@RequestBody BedroomRequest request) {
+        BedroomResponse response = bedroomService.createBedroom(request);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     /**
-     * <b>Endpoint para buscar todos os quartos cadastrados.</b>
-     * <p>
-     * Esse método recebe uma requisição <b>GET</b> no caminho <code>/list</code> e retorna um
-     * <code>ResponseEntity</code> contendo uma lista de objetos <code>BedroomResponse</code> com todos os quartos
-     * cadastrados. O status da resposta é <b>OK (200)</b>.
+     * <b>Lista todos os quartos</b>
      *
-     * @return ResponseEntity contendo a lista de BedroomResponse e o status da operação.
+     * @return Retorna uma lista de todos os quartos cadastrados no sistema
      */
     @GetMapping("/list")
     public ResponseEntity<List<BedroomResponse>> listBedrooms() {
-        List<BedroomResponse> bedroomResponses = bedroomService.getAllBedrooms();
-        return new ResponseEntity<>(bedroomResponses, HttpStatus.OK);
+        List<BedroomResponse> responseList = bedroomService.getAllBedrooms();
+        return new ResponseEntity<>(responseList, HttpStatus.OK);
     }
 
     /**
-     * <b>Endpoint para buscar um quarto por ID.</b>
-     * <p>
-     * Esse método recebe uma requisição <b>GET</b> no caminho <code>/id</code> onde <code>id</code> é o identificador
-     * do quarto. O ID é recuperado da anotação <code>@PathVariable(name = "id")</code>. O método delega a busca do
-     * quarto para o serviço <code>bedroomService</code> e retorna um <code>ResponseEntity</code> contendo o objeto
-     * <code>BedroomResponse</code> encontrado e o status <b>OK (200)</b>. Se o quarto não for encontrado, o método
-     * retorna um ResponseEntity com status <b>NOT_FOUND (404)</b>.
+     * <b>Busca um quarto por ID</b>
      *
      * @param id
      *         Identificador do quarto a ser buscado.
      *
-     * @return ResponseEntity contendo o BedroomResponse do quarto encontrado ou um status de erro.
+     * @return Retorna um quarto específico com base no ID fornecido
      */
     @GetMapping("/{id}")
     public ResponseEntity<BedroomResponse> getBedroomById(@PathVariable(name = "id") Long id) {
-        BedroomResponse bedroomResponse = bedroomService.getBedroomById(id);
-        return new ResponseEntity<>(bedroomResponse, HttpStatus.OK);
+        BedroomResponse response = bedroomService.getBedroomById(id);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     /**
-     * <b>Endpoint para atualizar um quarto.</b>
-     * <p>
-     * Esse método recebe uma requisição PUT no caminho `/id` onde `id` é o identificador do quarto. O ID é recuperado
-     * da anotação `@PathVariable(name = "id")`. O corpo da requisição deve conter um objeto `BedroomRequest` com os
-     * dados atualizados do quarto. O método delega a atualização do quarto para o serviço `bedroomService` e retorna um
-     * `ResponseEntity` contendo o objeto `BedroomResponse` atualizado e o status `OK` (200). Se o quarto não for
-     * encontrado, o método retorna um ResponseEntity com status `NOT_FOUND` (404).
+     * <b>Atualizar um quarto por ID</b>
      *
      * @param id
-     *         Identificador
+     *         Identificador único do quarto (Unique bedroom identifier)
      * @param bedroomRequest
+     *         Objeto contendo os dados do quarto a ser cadastrado.
      *
-     * @return
+     * @return Atualiza um quarto específico com base no ID fornecido e nos dados enviados no campo da requisição.
      */
     @PutMapping("/{id}")
     public ResponseEntity<BedroomResponse> updateBedroomById(@PathVariable(name = "id") Long id,
-                                                         @RequestBody BedroomRequest bedroomRequest) {
-        BedroomResponse bedroomResponse = bedroomService.updateBedroom(id, bedroomRequest);
-        return new ResponseEntity<>(bedroomResponse, HttpStatus.NO_CONTENT);
+                                                             @RequestBody BedroomRequest request) {
+        BedroomResponse response = bedroomService.updateBedroom(id, request);
+        return new ResponseEntity<>(response, HttpStatus.NO_CONTENT);
     }
 
     /**
-     * <b>xx</b>
+     * <b>Excluir um quarto por ID</b>
      *
      * @param id
+     *         Identificador único do quarto (Unique bedroom identifier)
      *
-     * @return
+     * @return Exclui um quarto específico com base no ID fornecidos
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBedroomById(@PathVariable(name = "id") Long id) {

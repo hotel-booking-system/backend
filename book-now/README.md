@@ -1,5 +1,13 @@
 # Book Now
 
+## Documentação
+
+- Swagger UI disponível na URL: http://localhost:8585/api/v1/swagger-ui.html
+- http://localhost:8585/api/v1/swagger-ui/index.html
+- Descrição do OpenAPI disponível na URL
+    - Formato JSON: http://localhost:8585/api/v1/v3/api-docs
+    - Formato YAML: http://localhost:8585/api/v1/v3/api-docs.yaml
+
 ## Executar a aplicação com Docker
 
 * Utilizando wsl2

@@ -109,7 +109,7 @@ paths:
         - name: id
           in: path
           required: true
-          description: 'O ID do quarto'
+          description: 'Identificador único do quarto (Unique bedroom identifier)'
           schema:
             type: integer
             format: int64
@@ -143,7 +143,7 @@ paths:
         - name: id
           in: path
           required: true
-          description: 'O ID do quarto'
+          description: 'Identificador único do quarto (Unique bedroom identifier)'
           schema:
             type: integer
             format: int64

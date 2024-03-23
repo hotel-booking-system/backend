@@ -1,3 +1,7 @@
 ### Listar os quartos de um Hotel
 # @name Listar os quartos de um Hotel
 GET http://localhost:8585/api/v1/bedrooms/hotels/1
+
+### Listar os quartos de um Hotel
+# @name Actuator
+GET http://localhost:8585/api/v1/actuator/info
