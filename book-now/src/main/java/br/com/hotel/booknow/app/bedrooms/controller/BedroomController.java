@@ -48,7 +48,7 @@ public class BedroomController {
      * @return ResponseEntity contendo o objeto BedroomResponse criado e o status da operação.
      */
     @PostMapping("/register")
-    public ResponseEntity<BedroomResponse> createBedroom(@RequestBody BedroomRequest bedroomRequest) {
+    public ResponseEntity<BedroomResponse> registerBedroom(@RequestBody BedroomRequest bedroomRequest) {
         BedroomResponse bedroomResponse = bedroomService.createBedroom(bedroomRequest);
         return new ResponseEntity<>(bedroomResponse, HttpStatus.CREATED);
     }
@@ -63,7 +63,7 @@ public class BedroomController {
      * @return ResponseEntity contendo a lista de BedroomResponse e o status da operação.
      */
     @GetMapping("/list")
-    public ResponseEntity<List<BedroomResponse>> getAllBedrooms() {
+    public ResponseEntity<List<BedroomResponse>> listBedrooms() {
         List<BedroomResponse> bedroomResponses = bedroomService.getAllBedrooms();
         return new ResponseEntity<>(bedroomResponses, HttpStatus.OK);
     }
@@ -104,7 +104,7 @@ public class BedroomController {
      * @return
      */
     @PutMapping("/{id}")
-    public ResponseEntity<BedroomResponse> updateBedroom(@PathVariable(name = "id") Long id,
+    public ResponseEntity<BedroomResponse> updateBedroomById(@PathVariable(name = "id") Long id,
                                                          @RequestBody BedroomRequest bedroomRequest) {
         BedroomResponse bedroomResponse = bedroomService.updateBedroom(id, bedroomRequest);
         return new ResponseEntity<>(bedroomResponse, HttpStatus.NO_CONTENT);
@@ -118,7 +118,7 @@ public class BedroomController {
      * @return
      */
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteBedroom(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Void> deleteBedroomById(@PathVariable(name = "id") Long id) {
         bedroomService.deleteBedroom(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

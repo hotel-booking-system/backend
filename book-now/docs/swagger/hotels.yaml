@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: 'API Hotel Booking System'
   description: |-
-    # API para gerenciar quartos em um sistema de reservas.
+    # Gerenciamento de Quartos
     
     **Objetivo:** Esta API fornece recursos para gerenciar quartos em um sistema de reservas de hotéis, incluindo 
     cadastro, listagem, busca, atualização e exclusão de quartos.
@@ -11,40 +11,38 @@ info:
     
     - **Cadastro de Quartos (POST /register):** Permite registrar um novo quarto no sistema. O corpo da requisição 
     deve conter os dados do quarto, como tipo, número, capacidade, preço, etc.
-    - **Listar Quartos (GET /list):** Retorna uma lista de todos os quartos cadastrados no sistema. A resposta pode
+    - **Cadastro de Quartos (GET /list):** Retorna uma lista de todos os quartos cadastrados no sistema. A resposta pode
     ser filtrada por tipo, número, capacidade, preço, etc.
-    - **Buscar Quarto por ID(GET /{id}):** Retorna os dados de um quarto específico, identificado pelo seu ID.
-    - **Atualizar Quarto por ID (PUT /{id}):** Permite atualizar os dados de um quarto existente. O corpo da requisição 
-    deve conter os dados atualizados do quarto
-    - **Excluir Quarto por ID (DELETE /{id}):** Exclui um quarto do sistema.
+    - **Cadastro de Quartos (GET /{id}):** Retorna os dados de um quarto específico, identificado pelo seu ID.
+    - **Cadastro de Quartos (PUT /{id}):** Permite atualizar os dados de um quarto existente. O corpo da requisição deve
+    conter os dados atualizados do quarto
+    - **Cadastro de Quartos (DELETE /{id}):** Exclui um quarto do sistema.
     
     ## Códigos de Erro:
     
     - **200 OK:** Operação realizada com sucesso.
-    - **201 Created:** Recurso cadastrado com sucesso!
+    - **201 Created:** Quarto cadastrado com sucesso!
     - **204 No Content:** Operação realizada com sucesso.
     - **400 Bad Request:** Ops, algo deu errado com sua requisição. Verifique se os dados estão corretos.
     - **401 Unauthorized:** Você precisa se conectar para acessar este recurso. Faça login ou crie uma conta.
-    - **403 Forbidden:** Você não tem permissão para acessar este recurso. Entre em contato com o administrador para 
-    solicitar acesso.
-    - **404 Not Found:** O que você procura não foi encontrado. Verifique se o endereço está correto ou tente buscar por 
-    algo diferente.
+    - **403 Forbidden:** Você não tem permissão para acessar este recurso. Entre em contato com o administrador para solicitar acesso.
+    - **404 Not Found:** O que você procura não foi encontrado. Verifique se o endereço está correto ou tente buscar por algo diferente.
     - **409 Conflict**: Este dado já está sendo utilizado. Tente outro ou entre em contato com o suporte.
-    - **500 Internal Server Error:** Ops, estamos com problemas técnicos. Tente novamente mais tarde.
+    - **500 Internal Server Error:** Ops, estamos com problemas técnicos. Tente novamente mais tarde..
 
   version: 1.0.0
 servers:
   - url: 'http:localhost:8585/api/v1/bedrooms'
 tags:
   - name: bedroom
-    description: 'Operações relacionadas a quartos'
+    description: 'Sobre os quartos'
 paths:
   /register:
     post:
       tags:
         - bedroom
       summary: 'Cadastrar novo quarto'
-      description: 'Cria um novo quarto no sistema.'
+      description: 'Creates a new bedroom with the provided information'
       operationId: registerBedroom
       requestBody:
         content:
@@ -53,7 +51,7 @@ paths:
               $ref: '#/components/schemas/BedroomRequest'
       responses:
         '201':
-          description: 'Quarto criado com sucesso.'
+          description: 'Bedroom created successfully'
           content:
             application/json:
               schema:
@@ -65,7 +63,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
         '409':
-          description: 'Número do quarto já cadastrado.'
+          description: 'Conflict (e.g., bedroom number already exists)'
           content:
             application/json:
               schema:
