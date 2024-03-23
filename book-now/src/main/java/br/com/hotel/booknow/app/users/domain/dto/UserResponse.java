@@ -1,7 +1,8 @@
-package br.com.hotel.booknow.app.users.domain;
+package br.com.hotel.booknow.app.users.domain.dto;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -9,13 +10,18 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+public class UserResponse {
 
 	private Long id;
+
 	private String fullName;
-	private String email;
+
+	private String usernames;
+
 	private String password;
+
 	private String phoneNumber;
-	private Date createDt;
+
+	private LocalDateTime createDt;
 
 }

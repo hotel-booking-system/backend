@@ -3,6 +3,7 @@ package br.com.hotel.booknow.app.bedrooms.controller;
 import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomRequest;
 import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomResponse;
 import br.com.hotel.booknow.app.bedrooms.service.BedroomService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +21,7 @@ import java.util.List;
  * A classe também é anotada com <code>@AllArgsConstructor</code>, que gera automaticamente um construtor com argumentos
  * para todos os atributos privados da classe.
  */
+@Tag(name = "Bedrooms", description = "Endpoints relacionados ao quartos")
 @RestController
 @RequestMapping(value = "/bedrooms")
 @AllArgsConstructor
@@ -105,7 +107,7 @@ public class BedroomController {
     public ResponseEntity<BedroomResponse> updateBedroom(@PathVariable(name = "id") Long id,
                                                          @RequestBody BedroomRequest bedroomRequest) {
         BedroomResponse bedroomResponse = bedroomService.updateBedroom(id, bedroomRequest);
-        return new ResponseEntity<>(bedroomResponse, HttpStatus.OK);
+        return new ResponseEntity<>(bedroomResponse, HttpStatus.NO_CONTENT);
     }
 
     /**
