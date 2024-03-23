@@ -2,6 +2,7 @@ package br.com.hotel.booknow.app.users.domain.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -23,14 +24,15 @@ public class Users {
     private Long id;
 
     @Size(min = 3)
-    @Column(nullable = false)
-    private String fullName;
+    @Column(nullable = false, name = "full_name")
+    private String name;
 
     @Email
     @Column(nullable = false, unique = true)
     private String usernames;
 
-    @Size(min = 8)
+    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\&*\\-\\+]).{8,}$",
+            message = "A senha deve ter no mínimo 8 caracteres, conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.")
     @Column(nullable = false)
     private String password;
 

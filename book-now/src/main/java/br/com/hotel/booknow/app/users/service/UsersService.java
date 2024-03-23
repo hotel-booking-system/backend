@@ -83,7 +83,7 @@ public class UsersService {
     public UserResponse updateUser(Long id, UserRequest request) {
         Users user = usersRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("User not found with id :" + id));
-        user.setFullName(request.getFullName());
+        user.setName(request.getFullName());
         user.setUsernames(request.getUsernames());
         user.setPhoneNumber(request.getPhoneNumber());
         user.setPassword(request.getPassword());
