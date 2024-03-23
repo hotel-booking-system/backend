@@ -13,7 +13,7 @@ spring:
     locale-resolver: fixed
   # MySQL Database Connection Properties
   datasource:
-    url: jdbc:mysql://localhost:3306/book_now_db?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=America/Sao_Paulo
+    url: jdbc:mysql://localhost:3306/booknow_db?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=America/Sao_Paulo
     username: root
     password: root
   jpa:
