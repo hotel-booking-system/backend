@@ -1,27 +1,50 @@
 package br.com.hotel.booknow.app.users.domain.entity;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "users")
 public class Users {
 
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	private String fullName;
+    @Size(min = 3)
+    @Column(nullable = false)
+    private String fullName;
 
-	private String usernames;
+    @Email
+    @Column(nullable = false, unique = true)
+    private String usernames;
 
-	private String password;
+    @Size(min = 8)
+    @Column(nullable = false)
+    private String password;
 
-	private String phoneNumber;
+    @Column(nullable = false)
+    private String phoneNumber;
 
-	private LocalDateTime createDt;
+    @Column(nullable = false)
+    private Boolean active;
+
+    @CreationTimestamp
+    @Column(updatable = false)
+    private LocalDateTime createdAt;
+
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
 
 }

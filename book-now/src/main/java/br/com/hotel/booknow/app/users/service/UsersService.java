@@ -34,6 +34,7 @@ public class UsersService {
     @Transactional
     public UserResponse createUser(UserRequest request) {
         Users users = UserMapper.userMapper().toEntity(request);
+        users.setActive(Boolean.TRUE);
         usersRepository.save(users);
         return UserMapper.userMapper().toUserResponse(users);
     }
@@ -86,7 +87,7 @@ public class UsersService {
         user.setUsernames(request.getUsernames());
         user.setPhoneNumber(request.getPhoneNumber());
         user.setPassword(request.getPassword());
-        user.setCreateDt(LocalDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
         user = usersRepository.save(user);
         return UserMapper.userMapper().toUserResponse(user);
     }

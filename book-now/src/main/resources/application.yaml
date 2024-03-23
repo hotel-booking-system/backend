@@ -21,6 +21,10 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: update
+  security:
+    user:
+      name: admin
+      password: admin
 
 # Springdoc OpenApi 3.1 & Swagger 3
 springdoc:
@@ -28,8 +32,9 @@ springdoc:
     path: /api-docs
     version: OPENAPI_3_0
   swagger-ui:
+    use-root-path: true
     operations-sorter: alpha
-    path: /documentation.html
+    path: /booknow-docs.html
 
 logging:
   level:

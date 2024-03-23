@@ -101,14 +101,6 @@
             <version>2.4.0</version>
         </dependency>
 
-        <!-- SECURITY -->
-        <!-- Spring Security -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-            <version>3.2.3</version>
-        </dependency>
-
         <!-- TESTS -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

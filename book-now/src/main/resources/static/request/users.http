@@ -1,3 +1,27 @@
 ### get users
 GET /api/v1/users HTTP/1.1
 Host: localhost:8585
+
+### Cadastrar novo Usuário
+# @name Cadastrar novo Usuário
+POST http://localhost:8585/api/v1/users/register
+Content-Type: application/json
+
+{
+  "fullName": "Rian",
+  "usernames": "rian@email.com",
+  "password": "12345678",
+  "phoneNumber": "11998765432"
+}
+
+### Atualizar Usuário
+# @name Atualizar Usuário
+PUT http://localhost:8585/api/v1/users/1
+Content-Type: application/json
+
+{
+  "fullName": "Juliane Maran",
+  "usernames": "juliane@email.com",
+  "password": "12345678",
+  "phoneNumber": "11998765432"
+}
