@@ -20,13 +20,13 @@ public class UsersController {
     private final UsersService usersService;
 
     @PostMapping("/register")
-    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest request) {
+    public ResponseEntity<UserResponse> registerUser(@RequestBody UserRequest request) {
         UserResponse userResponse = usersService.createUser(request);
         return new ResponseEntity<>(userResponse, HttpStatus.CREATED);
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<UserResponse>> getAllUsers() {
+    public ResponseEntity<List<UserResponse>> listUsers() {
         List<UserResponse> userResponses = usersService.getlAllUsers();
         return new ResponseEntity<>(userResponses, HttpStatus.OK);
     }
@@ -38,14 +38,14 @@ public class UsersController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponse> updateUser(@PathVariable(name = "id") Long id,
-                                                   @RequestBody UserRequest request) {
+    public ResponseEntity<UserResponse> updateUserById(@PathVariable(name = "id") Long id,
+                                                       @RequestBody UserRequest request) {
         UserResponse userResponse = usersService.updateUser(id, request);
         return new ResponseEntity<>(userResponse, HttpStatus.NO_CONTENT);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable(name = "id") Long id) {
+    public ResponseEntity<Void> deleteUserById(@PathVariable(name = "id") Long id) {
         usersService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

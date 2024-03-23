@@ -1,0 +1,262 @@
+openapi: 3.0.3
+info:
+  title: 'User API'
+  description: 'API para registro de usuários (API for user registration)'
+  version: 1.0.0
+servers:
+  - url: 'http:localhost:8585/api/v1/users'
+tags:
+  - name: users
+    description: 'Operações relacionadas a usuários'
+paths:
+  /register:
+    post:
+      tags:
+        - users
+      summary: 'Registrar um novo usuário (Register a new user)'
+      description: 'Cria um novo usuário no sistema. (Creates a new user in the system.)'
+      operationId: registerUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '201':
+          description: 'Usuário criado com sucesso (User created successfully)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserResponse'
+        '409':
+          description: 'Conflito (Conflict) <br> Usuário com este e-mail já existe (User with this email already exists)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: 'Erro interno no servidor.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /list:
+    get:
+      tags:
+        - users
+      summary: 'Listar todos os usuários cadastrados (List all registered users)'
+      description: 'Este endpoint recupera todos os usuários do sistema, com seus dados básicos. (This endpoint retrieves all users in the system, with their basic data.)'
+      operationId: listUsers
+      responses:
+        '200':
+          description: 'Lista de usuários retornada com sucesso (List of users successfully returned)'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserResponse'
+        '401':
+          description: 'Acesso não autorizado (Unauthorized access)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: 'Erro interno do servidor (Internal server error)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /{id}:
+    get:
+      tags:
+        - users
+      summary: 'Buscar um usuário pelo ID (Find a user by ID)'
+      description: 'Retorna os dados do usuário com o ID especificado. (Returns the data of the user with the specified ID.)'
+      operationId: getUserById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            description: 'Identificador único do usuário (Unique user identifier)'
+      responses:
+        '200':
+          description: 'Usuário encontrado com sucesso (User found successfully)'
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: 'Requisição inválida (Invalid request)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: 'Usuário não encontrado (User not found)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: 'Erro interno do servidor (Internal server error)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - users
+      summary: 'Atualizar um usuário pelo ID (Update a user by ID)'
+      description: 'Atualiza os dados do usuário com o ID especificado. (Updates the data of the user with the specified ID.)'
+      operationId: updateUserById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            description: 'Identificador único do usuário (Unique user identifier)'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRequest'
+      responses:
+        '204':
+          description: 'Usuário atualizado com sucesso (User successfully updated)'
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/UserResponse'
+        '400':
+          description: 'Requisição inválida (Invalid request)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: 'Usuário não encontrado (User not found)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: 'Erro interno do servidor (Internal server error)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      tags:
+        - users
+      summary: 'Excluir um usuário pelo ID (Delete a user by ID)'
+      description: 'Exclui o usuário com o ID especificado. (Deletes the user with the specified ID.)'
+      operationId: deleteHotelById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+            description: 'Identificador único do usuário (Unique user identifier)'
+      responses:
+        '204':
+          description: 'Usuário excluído com sucesso (User successfully deleted)'
+        '400':
+          description: 'Requisição inválida (Invalid request)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: 'Usuário não encontrado (User not found)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: 'Erro interno do servidor (Internal server error)'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    UserRequest:
+      type: object
+      required:
+        - fullName
+        - username
+        - password
+        - phoneNumber
+      properties:
+        fullName:
+          type: string
+          example: "João Silva"
+          description: 'Nome completo do usuário (Users full name)'
+        username:
+          type: string
+          example: 'joaosilva@example.com'
+          description: 'Nome de usuário para login (Username for login)'
+        password:
+          type: string
+          example: 'Senh@Forte123'
+          description: 'Senha do usuário (Users password)'
+        phoneNumber:
+          type: string
+          example: '+5511987654321'
+          description: 'Número de telefone do usuário (Users phone number)'
+    UserResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+          description: 'Identificador único do hotel'
+        fullName:
+          type: string
+          example: "João Silva"
+          description: 'Nome completo do usuário (Users full name)'
+        username:
+          type: string
+          example: 'joaosilva@example.com'
+          description: 'Nome de usuário para login (Username for login)'
+        password:
+          type: string
+          example: 'Senh@Forte123'
+          description: 'Senha do usuário (Users password)'
+        phoneNumber:
+          type: string
+          example: '+5511987654321'
+          description: 'Número de telefone do usuário (Users phone number)'
+        createdAt:
+          type: string
+          format: date-time
+          example: "2023-11-14T14:00:00Z"
+          description: 'Data de criação do hotel'
+        updatedAt:
+          type: string
+          format: date-time
+          example: "2023-11-14T14:00:00Z"
+          description: 'Data de atualização do hotel'
+    ErrorResponse:
+      type: object
+      description: 'Estrutura geral de resposta a erros'
+      properties:
+        status:
+          type: string
+        error:
+          type: string
+        message:
+          type: string
