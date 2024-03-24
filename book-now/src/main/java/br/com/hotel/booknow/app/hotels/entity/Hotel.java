@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.app.hotels.domain.entity;
+package br.com.hotel.booknow.app.hotels.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -113,6 +113,8 @@ public class Hotel {
 	@Min(value = 1)
 	@Column(nullable = false)
 	private Integer roomCount;
+
+	private Long bedroomId;
 
 	/**
 	 * <b>Data de criação do hotel</b> (Preenchida automaticamente)

@@ -1,6 +1,6 @@
-package br.com.hotel.booknow.app.hotels.domain.dto.request;
+package br.com.hotel.booknow.app.hotels.dto.request;
 
-import br.com.hotel.booknow.app.hotels.domain.entity.HotelType;
+import br.com.hotel.booknow.app.hotels.entity.HotelType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;

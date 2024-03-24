@@ -1,18 +1,16 @@
-package br.com.hotel.booknow.app.hotels.domain.dto.response;
+package br.com.hotel.booknow.app.hotels.dto.response;
 
-import br.com.hotel.booknow.app.bedrooms.dto.BedroomResponse;
-import br.com.hotel.booknow.app.hotels.domain.entity.HotelType;
+import br.com.hotel.booknow.app.hotels.entity.HotelType;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class HotelResponse {
+public class RegisterHotelResponse {
 
 	private Long id;
 	private String hotelName;
@@ -24,7 +22,5 @@ public class HotelResponse {
 	private String description;
 	private Integer roomCount;
 	private LocalDateTime createdAt;
-	private LocalDateTime updatedAt;
-	private List<BedroomResponse> bedrooms;
 
 }

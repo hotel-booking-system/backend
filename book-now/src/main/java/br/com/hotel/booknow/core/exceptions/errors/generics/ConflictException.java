@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.core.exceptions.errors;
+package br.com.hotel.booknow.core.exceptions.errors.generics;
 
 public class ConflictException extends RuntimeException {
 

@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.app.hotels.domain.entity;
+package br.com.hotel.booknow.app.hotels.entity;
 
 /**
  * <b>Enum que define os tipos de hotéis.</b>

@@ -82,7 +82,7 @@ public class ReservationValidator {
         Reservation reservation = ReservationMapper.INSTANCE.toEntity(request);
         reservation.setReservationStatus(ReservationStatus.PENDING);
         reservation.setTotalAmount(totalAmount);
-        reservation.setRoomId(bedroom.getId());
+        reservation.setRoomId(bedroom.getBedroomId());
         return reservation;
     }
 
@@ -137,7 +137,7 @@ public class ReservationValidator {
      */
     private boolean isRoomAvailable(Bedroom bedroom, LocalDate checkinDate, LocalDate checkoutDate) {
         List<Reservation> reservations = reservationRepository
-                .findByRoomIdAndCheckinDateAndCheckoutDate(bedroom.getId(), checkinDate, checkoutDate);
+                .findByRoomIdAndCheckinDateAndCheckoutDate(bedroom.getBedroomId(), checkinDate, checkoutDate);
         for (Reservation reservation : reservations) {
             if (isOverlapping(reservation.getCheckinDate(), reservation.getCheckoutDate(), checkinDate, checkoutDate)) {
                 return false;

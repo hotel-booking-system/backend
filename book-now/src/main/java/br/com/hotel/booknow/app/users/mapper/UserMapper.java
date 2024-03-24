@@ -1,8 +1,8 @@
-package br.com.hotel.booknow.app.users.domain.mapper;
+package br.com.hotel.booknow.app.users.mapper;
 
-import br.com.hotel.booknow.app.users.domain.dto.UserRequest;
-import br.com.hotel.booknow.app.users.domain.dto.UserResponse;
-import br.com.hotel.booknow.app.users.domain.entity.Users;
+import br.com.hotel.booknow.app.users.dto.UserRequest;
+import br.com.hotel.booknow.app.users.dto.UserResponse;
+import br.com.hotel.booknow.app.users.entity.Users;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;

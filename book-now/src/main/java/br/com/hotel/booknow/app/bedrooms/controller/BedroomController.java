@@ -104,4 +104,9 @@ public class BedroomController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/{hotelId}/hotels")
+    public ResponseEntity<List<BedroomResponse>> getBedroomsByHotelId(@PathVariable Long hotelId) {
+        List<BedroomResponse> response = bedroomService.getAllBedroomByHotelId(hotelId);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 }

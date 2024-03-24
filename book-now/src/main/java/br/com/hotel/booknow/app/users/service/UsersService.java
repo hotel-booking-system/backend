@@ -1,11 +1,10 @@
 package br.com.hotel.booknow.app.users.service;
 
-import br.com.hotel.booknow.app.users.domain.dto.UserRequest;
-import br.com.hotel.booknow.app.users.domain.dto.UserResponse;
-import br.com.hotel.booknow.app.users.domain.entity.Users;
-import br.com.hotel.booknow.app.users.domain.mapper.UserMapper;
+import br.com.hotel.booknow.app.users.dto.UserRequest;
+import br.com.hotel.booknow.app.users.dto.UserResponse;
+import br.com.hotel.booknow.app.users.entity.Users;
+import br.com.hotel.booknow.app.users.mapper.UserMapper;
 import br.com.hotel.booknow.app.users.repository.UsersRepository;
-import br.com.hotel.booknow.core.exceptions.errors.generics.NotFoundException;
 import br.com.hotel.booknow.core.exceptions.errors.user.UserNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

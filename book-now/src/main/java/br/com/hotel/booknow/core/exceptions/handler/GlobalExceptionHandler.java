@@ -2,7 +2,7 @@ package br.com.hotel.booknow.core.exceptions.handler;
 
 import br.com.hotel.booknow.core.exceptions.dto.ErrorResponse;
 import br.com.hotel.booknow.core.exceptions.dto.enums.ErrorCodes;
-import br.com.hotel.booknow.core.exceptions.errors.ConflictException;
+import br.com.hotel.booknow.core.exceptions.errors.generics.ConflictException;
 import br.com.hotel.booknow.core.exceptions.errors.generics.ForbiddenException;
 import br.com.hotel.booknow.core.exceptions.errors.generics.InvalidRequestException;
 import br.com.hotel.booknow.core.exceptions.errors.generics.NotFoundException;

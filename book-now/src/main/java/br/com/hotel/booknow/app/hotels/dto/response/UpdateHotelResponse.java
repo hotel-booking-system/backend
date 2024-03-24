@@ -1,6 +1,6 @@
-package br.com.hotel.booknow.app.hotels.domain.dto.response;
+package br.com.hotel.booknow.app.hotels.dto.response;
 
-import br.com.hotel.booknow.app.hotels.domain.entity.HotelType;
+import br.com.hotel.booknow.app.hotels.entity.HotelType;
 import lombok.*;
 
 import java.time.LocalDateTime;

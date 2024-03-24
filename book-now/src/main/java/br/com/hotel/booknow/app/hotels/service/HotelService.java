@@ -1,9 +1,10 @@
 package br.com.hotel.booknow.app.hotels.service;
 
-import br.com.hotel.booknow.app.hotels.domain.dto.request.HotelRequest;
-import br.com.hotel.booknow.app.hotels.domain.dto.response.HotelResponse;
-import br.com.hotel.booknow.app.hotels.domain.entity.Hotel;
-import br.com.hotel.booknow.app.hotels.domain.mapper.HotelMapper;
+import br.com.hotel.booknow.app.bedrooms.repository.BedroomRepository;
+import br.com.hotel.booknow.app.hotels.dto.request.HotelRequest;
+import br.com.hotel.booknow.app.hotels.dto.response.HotelResponse;
+import br.com.hotel.booknow.app.hotels.entity.Hotel;
+import br.com.hotel.booknow.app.hotels.mapper.HotelMapper;
 import br.com.hotel.booknow.app.hotels.repository.HotelRepository;
 import br.com.hotel.booknow.core.exceptions.errors.hotel.HotelNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ import java.util.List;
 public class HotelService {
 
     private final HotelRepository hotelRepository;
+    private final BedroomRepository bedroomRepository;
 
     @Transactional
     public HotelResponse createHotel(HotelRequest request) {

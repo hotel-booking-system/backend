@@ -1,42 +1,45 @@
 ### Cadastrar novo quarto
-# @name cadastrar quarto
+# @name registerBedroom
 POST http://localhost:8585/api/v1/bedrooms/register
 Content-Type: application/json
 
 {
-  "number": "102",
-  "roomType": "DOUBLE",
-  "capacity": 2,
+  "number": "305",
+  "roomType": "SINGLE",
+  "capacity": 1,
+  "dailyRate": 110.00,
+  "description": "Quarto de solteiro com vista para a cidade.",
+  "available": false,
+  "hotelId": 1
+}
+
+### Cadastrar novo quarto
+# @name updateBedroomById
+PUT http://localhost:8585/api/v1/bedrooms/2
+Content-Type: application/json
+
+{
+  "number": "103",
+  "roomType": "FAMILY",
+  "capacity": 3,
   "dailyRate": 150.00,
   "description": "Quarto de casal com vista para o jardim.",
   "available": false,
   "hotelId": 1
 }
 
-### Cadastrar novo quarto
-# @name atualizar quarto
-PUT http://localhost:8585/api/v1/bedrooms/{id}
-Content-Type: application/json
-
-{
-  "number": "101",
-  "roomType": "SINGLE",
-  "capacity": 1,
-  "dailyRate": 120.50,
-  "description": "Quarto individual com vista para a cidade.",
-  "available": true,
-  "hotelId": 1
-}
-
 ### Buscar Hotel por ID
 # @name Buscar quarto por ID
-GET http://localhost:8585/api/v1/bedrooms/1
+GET http://localhost:8585/api/v1/bedrooms/4
 
-### Listar todos os hotéis
-# @name Listar todos os quartos
+### Listar todos os quartos
+# @name listBedrooms
 GET http://localhost:8585/api/v1/bedrooms/list
 
 ### Excluir Hotel por ID
-# @name Excluir quarto
-DELETE http://localhost:8585/api/v1/bedrooms/{id}
+# @name deleteBedroomById
+DELETE http://localhost:8585/api/v1/bedrooms/5
 
+### Listar quartos do Hotel ID
+# @name getBedroomsByHotelId
+GET http://localhost:8585/api/v1/bedrooms/2/hotels
