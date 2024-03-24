@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.app.bedrooms.domain.entity;
+package br.com.hotel.booknow.app.bedrooms.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;

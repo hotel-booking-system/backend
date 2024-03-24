@@ -1,16 +1,19 @@
 package br.com.hotel.booknow.app.bedrooms.service;
 
-import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomRequest;
-import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomResponse;
-import br.com.hotel.booknow.app.bedrooms.domain.entity.Bedroom;
-import br.com.hotel.booknow.app.bedrooms.domain.mapper.BedroomMapper;
+import br.com.hotel.booknow.app.bedrooms.dto.BedroomRequest;
+import br.com.hotel.booknow.app.bedrooms.dto.BedroomResponse;
+import br.com.hotel.booknow.app.bedrooms.entity.Bedroom;
+import br.com.hotel.booknow.app.bedrooms.mapper.BedroomMapper;
 import br.com.hotel.booknow.app.bedrooms.repository.BedroomRepository;
+import br.com.hotel.booknow.app.reservation.entity.Reservation;
+import br.com.hotel.booknow.app.reservation.repository.ReservationRepository;
 import br.com.hotel.booknow.core.exceptions.errors.NotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Slf4j
@@ -19,6 +22,7 @@ import java.util.List;
 public class BedroomService {
 
     private final BedroomRepository bedroomRepository;
+    private final ReservationRepository reservationRepository;
 
     @Transactional
     public BedroomResponse createBedroom(BedroomRequest request) {
@@ -62,4 +66,11 @@ public class BedroomService {
         bedroomRepository.delete(bedroom);
     }
 
+    public boolean isAvailable(Bedroom bedroom, LocalDate checkinDate, LocalDate checkoutDate) {
+        // Buscar todas as reservas do quarto por período
+        List<Reservation> reservations = reservationRepository
+                .findByRoomIdAndCheckinDateAndCheckoutDate(bedroom.getId(), checkinDate, checkoutDate);
+        // verificar se existe alguma reserva para o período
+        return reservations.isEmpty();
+    }
 }

@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.app.bedrooms.domain.entity;
+package br.com.hotel.booknow.app.bedrooms.entity;
 
 /**
  * <b>Enum que define os tipos de quartos.</b>

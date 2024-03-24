@@ -1,7 +1,7 @@
 package br.com.hotel.booknow.app.bedrooms.controller;
 
-import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomRequest;
-import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomResponse;
+import br.com.hotel.booknow.app.bedrooms.dto.BedroomRequest;
+import br.com.hotel.booknow.app.bedrooms.dto.BedroomResponse;
 import br.com.hotel.booknow.app.bedrooms.service.BedroomService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.app.reservation.domain.entity;
+package br.com.hotel.booknow.app.reservation.entity;
 
 public enum ReservationStatus {
 

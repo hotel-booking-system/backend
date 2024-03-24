@@ -1,6 +1,6 @@
 package br.com.hotel.booknow.app.hotels.domain.dto.response;
 
-import br.com.hotel.booknow.app.bedrooms.domain.dto.BedroomResponse;
+import br.com.hotel.booknow.app.bedrooms.dto.BedroomResponse;
 import br.com.hotel.booknow.app.hotels.domain.entity.HotelType;
 import lombok.*;
 

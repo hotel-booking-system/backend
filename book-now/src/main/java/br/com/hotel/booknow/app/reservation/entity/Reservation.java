@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.app.reservation.domain.entity;
+package br.com.hotel.booknow.app.reservation.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;

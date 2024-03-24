@@ -1,0 +1,42 @@
+### Cadastrar nova reserva
+# @name cadastrar reserva
+POST http://localhost:8585/api/v1/reservations
+Content-Type: application/json
+
+{
+  "checkinDate": "23/03/2025",
+  "checkoutDate": "25/03/2025",
+  "numberAdults": 2,
+  "numberChildren": 1,
+  "totalAmount": 500.00,
+  "reservationStatus": "PENDING",
+  "roomId": 1
+}
+
+### Atualizar reserva
+# @name atualizar reserva
+PUT http://localhost:8585/api/v1/reservations/{id}
+Content-Type: application/json
+
+{
+  "checkinDate": "23/03/2025",
+  "checkoutDate": "25/03/2025",
+  "numberAdults": 2,
+  "numberChildren": 1,
+  "totalAmount": 500.00,
+  "reservationStatus": "PENDING",
+  "roomId": 123
+}
+
+### Buscar reserva por ID
+# @name Buscar reserva por ID
+GET http://localhost:8585/api/v1/reservations/1
+
+### Listar todos as reservas
+# @name Listar todos as reservas
+GET http://localhost:8585/api/v1/reservations/list
+
+### Excluir reserva por ID
+# @name Excluir reserva
+DELETE http://localhost:8585/api/v1/reservations/{id}
+
