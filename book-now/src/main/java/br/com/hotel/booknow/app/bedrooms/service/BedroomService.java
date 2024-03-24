@@ -7,7 +7,8 @@ import br.com.hotel.booknow.app.bedrooms.mapper.BedroomMapper;
 import br.com.hotel.booknow.app.bedrooms.repository.BedroomRepository;
 import br.com.hotel.booknow.app.reservation.entity.Reservation;
 import br.com.hotel.booknow.app.reservation.repository.ReservationRepository;
-import br.com.hotel.booknow.core.exceptions.errors.NotFoundException;
+import br.com.hotel.booknow.core.exceptions.errors.bedroom.RoomNotFoundException;
+import br.com.hotel.booknow.core.exceptions.errors.generics.NotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -40,14 +41,14 @@ public class BedroomService {
     @Transactional(readOnly = true)
     public BedroomResponse getBedroomById(Long id) {
         Bedroom bedroom = bedroomRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Bedroom not found with id :" + id));
+                .orElseThrow(RoomNotFoundException::new);
         return BedroomMapper.bedroomMapper().toBedroomResponse(bedroom);
     }
 
     @Transactional
     public BedroomResponse updateBedroom(Long id, BedroomRequest request) {
         Bedroom bedroom = bedroomRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Bedroom not found with id :" + id));
+                .orElseThrow(RoomNotFoundException::new);
         bedroom.setNumber(request.getNumber());
         bedroom.setRoomType(request.getRoomType());
         bedroom.setCapacity(request.getCapacity());
@@ -62,7 +63,7 @@ public class BedroomService {
     @Transactional
     public void deleteBedroom(Long id) {
         Bedroom bedroom = bedroomRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Bedroom not found with id :" + id));
+                .orElseThrow(RoomNotFoundException::new);
         bedroomRepository.delete(bedroom);
     }
 

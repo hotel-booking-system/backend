@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.core.exceptions.errors;
+package br.com.hotel.booknow.core.exceptions.errors.reservation;
 
 public class InvalidReservationDatesException extends RuntimeException {
     public InvalidReservationDatesException() {

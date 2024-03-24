@@ -7,9 +7,9 @@ import br.com.hotel.booknow.app.reservation.entity.Reservation;
 import br.com.hotel.booknow.app.reservation.entity.ReservationStatus;
 import br.com.hotel.booknow.app.reservation.mapper.ReservationMapper;
 import br.com.hotel.booknow.app.reservation.repository.ReservationRepository;
-import br.com.hotel.booknow.core.exceptions.errors.BedroomNotAvailableException;
-import br.com.hotel.booknow.core.exceptions.errors.InvalidReservationDatesException;
-import br.com.hotel.booknow.core.exceptions.errors.RoomNotFoundException;
+import br.com.hotel.booknow.core.exceptions.errors.bedroom.RoomNotAvailableException;
+import br.com.hotel.booknow.core.exceptions.errors.reservation.InvalidReservationDatesException;
+import br.com.hotel.booknow.core.exceptions.errors.bedroom.RoomNotFoundException;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -40,7 +40,7 @@ public class ReservationValidator {
      *
      * @throws InvalidReservationDatesException
      *         se a data de entrada for posterior à data de saída
-     * @throws BedroomNotAvailableException
+     * @throws RoomNotAvailableException
      *         se o quarto não estiver disponível para as datas selecionadas
      */
     public void validate(ReservationRequest request) {
@@ -63,7 +63,7 @@ public class ReservationValidator {
      */
     public Bedroom findRoomById(Long rommId) {
         return bedroomRepository.findById(rommId)
-                .orElseThrow(() -> new RoomNotFoundException("Quarto não encontrado!"));
+                .orElseThrow(RoomNotFoundException::new);
     }
 
     /**
@@ -92,7 +92,7 @@ public class ReservationValidator {
      * @param request
      *         a requisição de reserva a ser validada
      *
-     * @throws BedroomNotAvailableException
+     * @throws RoomNotAvailableException
      *         Se o quarto não estiver disponível para as datas selecionadas
      */
     private void validateRoomAvailability(ReservationRequest request) {
@@ -100,7 +100,7 @@ public class ReservationValidator {
         Bedroom bedroom = findRoomById(request.getRoomId());
         if (!isRoomAvailable(bedroom, request.getCheckinDate(), request.getCheckoutDate())) {
             log.error("Quarto indisponível para as datas solicitadas.");
-            throw new BedroomNotAvailableException("Quarto indisponível para as datas selecionadas.");
+            throw new RoomNotAvailableException("Quarto indisponível para as datas selecionadas.");
         }
         log.info("Quarto disponível para as datas selecionadas!");
     }

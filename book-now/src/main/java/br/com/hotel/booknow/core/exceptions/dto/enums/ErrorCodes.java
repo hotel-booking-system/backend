@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.core.exceptions.dto;
+package br.com.hotel.booknow.core.exceptions.dto.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import lombok.Getter;
  */
 @Getter
 @AllArgsConstructor
-public enum ErrorCode {
+public enum ErrorCodes {
 
     /**
      * <b>Requisição inválida</b>
@@ -65,6 +65,7 @@ public enum ErrorCode {
     NOT_FOUND(
             "404",
             "O que você procura não foi encontrado. Verifique se o endereço está correto ou tente buscar por algo diferente."),
+
     /**
      * <b>Conflito de dados.</b>
      * <p>
@@ -75,6 +76,7 @@ public enum ErrorCode {
     CONFLICT(
             "409",
             "Este dado já está sendo utilizado. Tente outro ou entre em contato com o suporte."),
+
     /**
      * <b>Erro interno do servidor.</b>
      * <p>

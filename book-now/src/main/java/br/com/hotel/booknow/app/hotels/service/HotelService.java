@@ -5,7 +5,7 @@ import br.com.hotel.booknow.app.hotels.domain.dto.response.HotelResponse;
 import br.com.hotel.booknow.app.hotels.domain.entity.Hotel;
 import br.com.hotel.booknow.app.hotels.domain.mapper.HotelMapper;
 import br.com.hotel.booknow.app.hotels.repository.HotelRepository;
-import br.com.hotel.booknow.core.exceptions.errors.NotFoundException;
+import br.com.hotel.booknow.core.exceptions.errors.hotel.HotelNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -40,14 +40,14 @@ public class HotelService {
     @Transactional(readOnly = true)
     public HotelResponse getHotelById(Long id) {
         Hotel hotel = hotelRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Hotel not found with id :" + id));
+                .orElseThrow(HotelNotFoundException::new);
         return HotelMapper.hotelMapper().toHotelResponse(hotel);
     }
 
     @Transactional
     public HotelResponse updateHotel(Long id, HotelRequest request) {
         Hotel hotel = hotelRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Hotel not found with id :" + id));
+                .orElseThrow(HotelNotFoundException::new);
         hotel.setHotelName(request.getHotelName());
         hotel.setLocation(request.getLocation());
         hotel.setPhoneNumber(request.getPhoneNumber());
@@ -63,7 +63,7 @@ public class HotelService {
     @Transactional
     public void deleteHotel(Long id) {
         Hotel hotel = hotelRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Hotel not found with id :" + id));
+                .orElseThrow(HotelNotFoundException::new);
         hotelRepository.delete(hotel);
     }
 

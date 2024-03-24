@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.core.exceptions.errors;
+package br.com.hotel.booknow.core.exceptions.errors.user;
 
 /**
  * <b>HTTP Status 400 - Bad Request</b>

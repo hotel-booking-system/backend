@@ -5,7 +5,8 @@ import br.com.hotel.booknow.app.users.domain.dto.UserResponse;
 import br.com.hotel.booknow.app.users.domain.entity.Users;
 import br.com.hotel.booknow.app.users.domain.mapper.UserMapper;
 import br.com.hotel.booknow.app.users.repository.UsersRepository;
-import br.com.hotel.booknow.core.exceptions.errors.NotFoundException;
+import br.com.hotel.booknow.core.exceptions.errors.generics.NotFoundException;
+import br.com.hotel.booknow.core.exceptions.errors.user.UserNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -65,7 +66,7 @@ public class UsersService {
     @Transactional(readOnly = true)
     public UserResponse getUserById(Long id) {
         Users user = usersRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("User not found with id :" + id));
+                .orElseThrow(UserNotFoundException::new);
         return UserMapper.userMapper().toUserResponse(user);
     }
 
@@ -82,7 +83,7 @@ public class UsersService {
     @Transactional
     public UserResponse updateUser(Long id, UserRequest request) {
         Users user = usersRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("User not found with id :" + id));
+                .orElseThrow(UserNotFoundException::new);
         user.setName(request.getFullName());
         user.setUsernames(request.getUsernames());
         user.setPhoneNumber(request.getPhoneNumber());
@@ -103,7 +104,7 @@ public class UsersService {
     @Transactional
     public void deleteUser(Long id) {
         Users user = usersRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("User not found with id :" + id));
+                .orElseThrow(UserNotFoundException::new);
         usersRepository.delete(user);
     }
 
