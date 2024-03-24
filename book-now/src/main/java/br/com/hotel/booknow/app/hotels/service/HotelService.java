@@ -1,12 +1,12 @@
 package br.com.hotel.booknow.app.hotels.service;
 
-import br.com.hotel.booknow.app.bedrooms.repository.BedroomRepository;
 import br.com.hotel.booknow.app.hotels.dto.request.HotelRequest;
 import br.com.hotel.booknow.app.hotels.dto.response.HotelResponse;
 import br.com.hotel.booknow.app.hotels.entity.Hotel;
 import br.com.hotel.booknow.app.hotels.mapper.HotelMapper;
 import br.com.hotel.booknow.app.hotels.repository.HotelRepository;
-import br.com.hotel.booknow.core.exceptions.errors.hotel.HotelNotFoundException;
+import br.com.hotel.booknow.core.exceptions.errors.bedroom.UnableToUpdateRoomException;
+import br.com.hotel.booknow.core.exceptions.errors.hotel.UnableToDeleteHotelException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -24,13 +24,13 @@ import java.util.List;
 public class HotelService {
 
     private final HotelRepository hotelRepository;
-    private final BedroomRepository bedroomRepository;
+    private final HotelHelper hotelHelper;
 
     @Transactional
     public HotelResponse createHotel(HotelRequest request) {
         Hotel hotel = HotelMapper.hotelMapper().toHotel(request);
-        hotelRepository.save(hotel);
-        return HotelMapper.hotelMapper().toHotelResponse(hotel);
+        hotelHelper.validateHotelData(hotel);
+        return hotelHelper.saveHotel(hotel);
     }
 
     @Transactional(readOnly = true)
@@ -41,32 +41,27 @@ public class HotelService {
 
     @Transactional(readOnly = true)
     public HotelResponse getHotelById(Long id) {
-        Hotel hotel = hotelRepository.findById(id)
-                .orElseThrow(HotelNotFoundException::new);
+        Hotel hotel = hotelHelper.findHotelById(id);
         return HotelMapper.hotelMapper().toHotelResponse(hotel);
     }
 
     @Transactional
     public HotelResponse updateHotel(Long id, HotelRequest request) {
-        Hotel hotel = hotelRepository.findById(id)
-                .orElseThrow(HotelNotFoundException::new);
-        hotel.setHotelName(request.getHotelName());
-        hotel.setLocation(request.getLocation());
-        hotel.setPhoneNumber(request.getPhoneNumber());
-        hotel.setEmail(request.getEmail());
-        hotel.setHotelType(request.getHotelType());
-        hotel.setCnpjNumber(request.getCnpjNumber());
-        hotel.setDescription(request.getDescription());
-        hotel.setRoomCount(request.getRoomCount());
-        hotel = hotelRepository.save(hotel);
-        return HotelMapper.hotelMapper().toHotelResponse(hotel);
+        Hotel hotel = hotelHelper.findHotelById(id);
+        HotelHelper.updateHotelData(request, hotel);
+        return hotelHelper.saveHotel(hotel);
+
     }
 
     @Transactional
     public void deleteHotel(Long id) {
-        Hotel hotel = hotelRepository.findById(id)
-                .orElseThrow(HotelNotFoundException::new);
-        hotelRepository.delete(hotel);
+        Hotel hotel = hotelHelper.findHotelById(id);
+        try {
+            hotelRepository.delete(hotel);
+        } catch (UnableToDeleteHotelException ex) {
+            log.error("Erro ao tentar excluir Hotel.");
+            throw ex;
+        }
     }
 
 }

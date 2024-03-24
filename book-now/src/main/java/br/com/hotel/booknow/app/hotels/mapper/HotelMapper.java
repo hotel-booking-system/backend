@@ -3,6 +3,8 @@ package br.com.hotel.booknow.app.hotels.mapper;
 import br.com.hotel.booknow.app.hotels.dto.request.HotelRequest;
 import br.com.hotel.booknow.app.hotels.dto.response.HotelResponse;
 import br.com.hotel.booknow.app.hotels.entity.Hotel;
+import br.com.hotel.booknow.app.users.dto.UserRequest;
+import br.com.hotel.booknow.app.users.entity.Users;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
