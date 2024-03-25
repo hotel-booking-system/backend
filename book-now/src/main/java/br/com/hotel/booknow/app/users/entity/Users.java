@@ -24,15 +24,14 @@ public class Users {
     private Long id;
 
     @Size(min = 3)
-    @Column(nullable = false, name = "full_name")
+    @Column(nullable = false)
     private String name;
 
     @Email
     @Column(nullable = false, unique = true)
     private String usernames;
 
-    @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\\$%\\&*\\-\\+]).{8,}$",
-            message = "A senha deve ter no mínimo 8 caracteres, conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.")
+    @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*()-+]).{8,}$")
     @Column(nullable = false)
     private String password;
 

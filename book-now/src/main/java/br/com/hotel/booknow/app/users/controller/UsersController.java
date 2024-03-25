@@ -3,15 +3,19 @@ package br.com.hotel.booknow.app.users.controller;
 import br.com.hotel.booknow.app.users.dto.UserRequest;
 import br.com.hotel.booknow.app.users.dto.UserResponse;
 import br.com.hotel.booknow.app.users.service.UsersService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Tag(name = "users", description = "Operações relacionadas a usuários")
 @RestController
 @RequestMapping(value = "/users")
 @AllArgsConstructor

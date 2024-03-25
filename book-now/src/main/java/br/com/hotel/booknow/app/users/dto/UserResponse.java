@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class UserResponse {
 
     private Long id;
-    private String fullName;
+    private String name;
     private String usernames;
     private String phoneNumber;
     private LocalDateTime createDt;
