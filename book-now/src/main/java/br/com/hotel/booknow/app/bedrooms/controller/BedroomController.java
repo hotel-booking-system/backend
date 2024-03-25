@@ -3,6 +3,9 @@ package br.com.hotel.booknow.app.bedrooms.controller;
 import br.com.hotel.booknow.app.bedrooms.dto.BedroomRequest;
 import br.com.hotel.booknow.app.bedrooms.dto.BedroomResponse;
 import br.com.hotel.booknow.app.bedrooms.service.BedroomService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,10 +24,23 @@ import java.util.List;
  * A classe também é anotada com <code>@AllArgsConstructor</code>, que gera automaticamente um construtor com argumentos
  * para todos os atributos privados da classe.
  */
-@Tag(name = "bedroom", description = "Operações relacionadas a quartos")
 @RestController
 @RequestMapping(value = "/bedrooms")
 @AllArgsConstructor
+@OpenAPIDefinition(
+        info = @Info(
+                title = "API Booknow",
+                description = "API REST Booknow - Bedrooms",
+                version = "1.0.0"
+        ),
+        tags = @Tag(
+                name = "users",
+                description = "Gerenciamento de quartos"
+        ),
+        servers = @Server(
+                url = "http://localhost:8585/api/v1/bedrooms"
+        )
+)
 public class BedroomController {
 
     /**
@@ -37,7 +53,7 @@ public class BedroomController {
     /**
      * <b>Cadastrar novo quarto</b>
      *
-     * @param bedroomRequest
+     * @param request
      *         Objeto contendo os dados do quarto a ser cadastrado.
      *
      * @return ResponseEntity contendo o objeto BedroomResponse criado e o status da operação.
@@ -78,7 +94,7 @@ public class BedroomController {
      *
      * @param id
      *         Identificador único do quarto (Unique bedroom identifier)
-     * @param bedroomRequest
+     * @param request
      *         Objeto contendo os dados do quarto a ser cadastrado.
      *
      * @return Atualiza um quarto específico com base no ID fornecido e nos dados enviados no campo da requisição.
