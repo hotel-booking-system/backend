@@ -22,12 +22,6 @@ public enum UserErrorCodes {
             "Ops, o email informado parece estar incorreto. " +
                     "Verifique o formato e tente novamente."),
     /**
-     * 404 - Not Found
-     */
-    USER_NOT_FOUND("Usuário não encontrado.",
-            "Ops, não encontramos nenhum usuário com esse ID. " +
-                    "Verifique o ID e tente novamente."),
-    /**
      * 403 - Forbidden
      * <p>
      * Observação: O usuário está autenticado, mas o acesso à sua conta está bloquado.
@@ -36,6 +30,12 @@ public enum UserErrorCodes {
             " Usuário inativo.",
             "Ops, seu acesso está bloqueado. " +
                     "Entre em contato com o suporte para reativar sua conta"),
+    /**
+     * 404 - Not Found
+     */
+    USER_NOT_FOUND("Usuário não encontrado.",
+            "Ops, não encontramos nenhum usuário com esse ID. " +
+                    "Verifique o ID e tente novamente."),
     /**
      * 409 - Conflict
      */
