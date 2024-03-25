@@ -1,0 +1,16 @@
+### Hello World
+# @name helloWorld
+GET http://localhost:8585/api/v1/hello-world
+
+### Hello World Bean
+# @name helloWorldBean
+GET http://localhost:8585/api/v1/hello-world-bean
+
+### Hello World Bean PathVariable
+# @name helloWorldPathVariable
+GET http://localhost:8585/api/v1/hello-world/path-variable/Juliane
+
+### Exploring Internationalization for REST API
+# @name helloWorldInternationalized
+GET http://localhost:8585/api/v1/hello-world-internationalized
+Accept-Language: en
