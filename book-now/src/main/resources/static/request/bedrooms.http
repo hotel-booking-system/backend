@@ -4,13 +4,13 @@ POST http://localhost:8585/api/v1/bedrooms/register
 Content-Type: application/json
 
 {
-  "number": "305",
-  "roomType": "SINGLE",
+  "number": "308",
+  "room_type": "SINGLE",
   "capacity": 1,
-  "dailyRate": 110.00,
+  "daily_rate": 110.00,
   "description": "Quarto de solteiro com vista para a cidade.",
   "available": false,
-  "hotelId": 1
+  "hotel_id": 1
 }
 
 ### Cadastrar novo quarto
@@ -20,12 +20,12 @@ Content-Type: application/json
 
 {
   "number": "103",
-  "roomType": "FAMILY",
+  "room_type": "FAMILY",
   "capacity": 3,
-  "dailyRate": 150.00,
+  "daily_rate": 150.00,
   "description": "Quarto de casal com vista para o jardim.",
   "available": false,
-  "hotelId": 1
+  "hotel_id": 1
 }
 
 ### Buscar Hotel por ID

@@ -26,8 +26,8 @@ public class UserHelper {
     }
 
     public void updateUserData(UserRequest request, Users user) {
-        user.setName(request.getFullName());
-        user.setUsernames(request.getUsernames());
+        user.setName(request.getName());
+        user.setUsername(request.getUsername());
         user.setPhoneNumber(request.getPhoneNumber());
         user.setPassword(request.getPassword());
         user.setUpdatedAt(LocalDateTime.now());

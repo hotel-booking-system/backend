@@ -1,6 +1,7 @@
 package br.com.hotel.booknow.app.reservation.dto;
 
 import br.com.hotel.booknow.app.reservation.entity.ReservationStatus;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
@@ -12,6 +13,7 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ReservationResponse {
 
     private Long id;

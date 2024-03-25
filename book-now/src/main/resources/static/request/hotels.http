@@ -4,29 +4,29 @@ POST http://localhost:8585/api/v1/hotels/register
 Content-Type: application/json
 
 {
-  "hotelName": "Hotel Aconchego",
+  "hotel_name": "Hotel Aconchego",
   "location": "Rua Dias Gomes, São Paulo - SP",
-  "phoneNumber": "+11987654321",
+  "phone_number": "+11987654321",
   "email": "contato@hotelnaconchego.com",
-  "hotelType": "HOTEL",
-  "cnpjNumber": "01040428000120",
+  "hotel_type": "HOTEL",
+  "cnpj_number": "01040428000120",
   "description": "Hotel com piscina, sauna e restaurante.",
-  "roomCount": 100
+  "room_count": 100
 }
 
 ### Atualizar dados do Hotel por ID
 # @name updateHotelById
-PUT http://localhost:8585/api/v1/hotels/{id}
+PUT http://localhost:8585/api/v1/hotels/1
 Content-Type: application/json
 
 {
-  "hotelName": "Hotel Aconchego",
+  "hotel_name": "Hotel Aconchego",
   "location": "Rua Dias Gomes, São Paulo - SP",
-  "phoneNumber": "+11987654321",
+  "phone_number": "+11987654321",
   "email": "contato@hotelnaconchego.com",
-  "hotelType": "RESORT",
+  "hotel_type": "RESORT",
   "description": "Hotel com piscina, sauna e restaurante.",
-  "roomCount": 100
+  "room_count": 100
 }
 
 ### Buscar Hotel por ID

@@ -1,66 +1,55 @@
-### É o endpoint principal do Actuator.
-### Acessando-o, você obtém uma visão geral dos demais endpoints disponíveis.
+###
 # @name actuator
 GET http://localhost:8585/api/v1/actuator
 
-### Lista todos os beans (objetos gerenciados pelo Spring) presentes na sua aplicação.
+###
 # @name beans
 GET http://localhost:8585/api/v1/actuator/beans
 
-### Fornece informações sobre a saúde da sua aplicação,
-### indicando se ela está funcionando corretamente ou se há algum problema.
+###
 # @name health
 GET http://localhost:8585/api/v1/actuator/health
 
-### Exibe métricas da aplicação, como uso de memória, CPU, tempo de resposta de requisições e outras estatísticas
-### úteis para identificar gargalos e otimizar o desempenho.
+###
 # @name metrics
 GET http://localhost:8585/api/v1/actuator/metrics
 
-### Mostra detalhes sobre os mapeamentos de requisições configurados na sua aplicação,
-### incluindo os paths e os métodos HTTP associados a cada controlador.
+###
 # @name mappings
 GET http://localhost:8585/api/v1/actuator/mappings
 
-### Fornece informações sobre os caches utilizados na sua aplicação.
-### Você pode consultar o status geral do cache (/actuator/caches) ou
-### obter detalhes específicos de um cache individual (/actuator/caches/{cache}).
+### .
 # @name caches
 GET http://localhost:8585/api/v1/actuator/caches
 
-### Exibe informações gerais sobre a aplicação, como versão, dependências, ambiente e configurações.
+###
 # @name info
 GET http://localhost:8585/api/v1/actuator/info
 
-### Lista as condições de inicialização (beans do tipo ApplicationListener) registradas na sua aplicação.
+###
 # @name conditions
 GET http://localhost:8585/api/v1/actuator/conditions
 
-### Mostra as propriedades de configuração da aplicação. Você pode consultar todas as propriedades
-### (/actuator/configprops) ou filtrar por um prefixo específico (/actuator/configprops/{prefix}).
+###
 # @name configprops
 GET http://localhost:8585/api/v1/actuator/configprops
 
-### Exibe as variáveis de ambiente configuradas para a sua aplicação.
-### Você pode consultar todas as variáveis (/actuator/env) ou
-### filtrar por um padrão específico (/actuator/env/{toMatch}).
+###
 # @name env
 GET http://localhost:8585/api/v1/actuator/env
 
-### Permite visualizar e alterar o nível de log de diferentes categorias na sua aplicação.
+###
 # @name loggers
 GET http://localhost:8585/api/v1/actuator/loggers
 
-### Gera um dump da heap memory da aplicação, útil para identificar possíveis vazamentos de memória.
-### Atenção: utilize este endpoint com cautela, pois o dump pode ser um arquivo grande.
+###
 # @name heapdump
 GET http://localhost:8585/api/v1/actuator/heapdump
 
-### Gera um dump das threads ativas na aplicação, auxiliando na análise de
-### deadlocks ou problemas de performance relacionados a threads.
+###
 # @name threaddump
 GET http://localhost:8585/api/v1/actuator/threaddump
 
-### Lista as tarefas agendadas configuradas na sua aplicação utilizando o @Scheduled do Spring.
+###
 # @name scheduledtasks
 GET http://localhost:8585/api/v1/actuator/scheduledtasks

@@ -8,10 +8,10 @@ POST http://localhost:8585/api/v1/users/register
 Content-Type: application/json
 
 {
-  "fullName": "Rian",
-  "usernames": "rian@email.com",
-  "password": "12345678",
-  "phoneNumber": "11998765432"
+  "name": "Rian 2",
+  "username": "rian2@email.com",
+  "password": "1l9%AY9x",
+  "phone_number": "11998765432"
 }
 
 ### Atualizar Usuário
@@ -20,8 +20,8 @@ PUT http://localhost:8585/api/v1/users/1
 Content-Type: application/json
 
 {
-  "fullName": "Juliane Maran",
-  "usernames": "juliane@email.com",
+  "name": "Juliane Maran",
+  "username": "juliane@email.com",
   "password": "12345678",
-  "phoneNumber": "11998765432"
+  "phone_number": "11998765432"
 }

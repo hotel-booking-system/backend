@@ -29,7 +29,7 @@ public class Users {
 
     @Email
     @Column(nullable = false, unique = true)
-    private String usernames;
+    private String username;
 
     @Pattern(regexp = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#$%^&*()-+]).{8,}$")
     @Column(nullable = false)

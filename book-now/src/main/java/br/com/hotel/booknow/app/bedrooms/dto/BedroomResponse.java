@@ -1,6 +1,7 @@
 package br.com.hotel.booknow.app.bedrooms.dto;
 
 import br.com.hotel.booknow.app.bedrooms.entity.RoomType;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -13,6 +14,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BedroomResponse {
 
 	private Long bedroomId;

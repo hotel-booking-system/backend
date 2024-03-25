@@ -4,13 +4,13 @@ POST http://localhost:8585/api/v1/reservations
 Content-Type: application/json
 
 {
-  "checkinDate": "23/03/2025",
-  "checkoutDate": "25/03/2025",
-  "numberAdults": 2,
-  "numberChildren": 1,
-  "totalAmount": 500.00,
-  "reservationStatus": "PENDING",
-  "roomId": 1
+  "checkin_date": "23/03/2025",
+  "checkout_date": "25/03/2025",
+  "number_adults": 2,
+  "number_children": 1,
+  "total_amount": 500.00,
+  "reservation_status": "PENDING",
+  "room_id": 1
 }
 
 ### Atualizar reserva
@@ -19,13 +19,13 @@ PUT http://localhost:8585/api/v1/reservations/{id}
 Content-Type: application/json
 
 {
-  "checkinDate": "23/03/2025",
-  "checkoutDate": "25/03/2025",
-  "numberAdults": 2,
-  "numberChildren": 1,
-  "totalAmount": 500.00,
-  "reservationStatus": "PENDING",
-  "roomId": 123
+  "checkin_date": "23/03/2025",
+  "checkout_date": "25/03/2025",
+  "number_adults": 2,
+  "number_children": 1,
+  "total_amount": 500.00,
+  "reservation_status": "PENDING",
+  "room_id": 123
 }
 
 ### Buscar reserva por ID
