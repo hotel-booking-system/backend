@@ -8,10 +8,6 @@ spring:
     name: book-now
   devtools:
     add-properties: true
-  mvc:
-    locale: pt_BR
-    locale-resolver: fixed
-  # MySQL Database Connection Properties
   datasource:
     url: jdbc:mysql://localhost:3306/booknow_db?createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=America/Sao_Paulo
     username: root
@@ -21,21 +17,18 @@ spring:
     show-sql: false
     hibernate:
       ddl-auto: update
-  security:
-    user:
-      name: admin
-      password: admin
+  messages:
+    basename: messages
+#  jackson:
+#    serialization:
+#      write-dates-as-timestamps: false
 
-# http://localhost:8585/api/v1/swagger-ui.html
-springdoc:
-  swagger-ui:
-    path: /swagger-ui.html # swagger-ui custom path
-#  api-docs:
-#    version: OPENAPI_3_1
-#    path: /api-docs # /api-docs endpoint custom path
-#  default-consumes-media-type: application/json
-#  default-produces-media-type: /
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 
 logging:
   level:
-    web: DEBUG
+    org.springframework: DEBUG

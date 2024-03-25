@@ -21,8 +21,6 @@
         <lombok.version>1.18.30</lombok.version>
         <mapstruct.version>1.5.5.Final</mapstruct.version>
         <lombok.mapstruct.version>0.2.0</lombok.mapstruct.version>
-        <spring-cloud.version>2023.0.0</spring-cloud.version>
-        <springdoc.openapi.version>1.8.0</springdoc.openapi.version>
     </properties>
 
     <dependencies>
@@ -99,25 +97,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc.openapi.version}</version>
-        </dependency>
-        <!-- Gera a documentanção no formato JSON -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-webmvc-core</artifactId>
-            <version>${springdoc.openapi.version}</version>
-        </dependency>
-        <!-- Gera a documentação no formato YAML -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-webflux-ui</artifactId>
-            <version>${springdoc.openapi.version}</version>
-        </dependency>
-        <!-- Gera a documentação a partir do Javadoc, melhorando o suporte de tags e comentários javadoc -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-javadoc</artifactId>
-            <version>${springdoc.openapi.version}</version>
+            <version>1.8.0</version>
         </dependency>
 
         <!-- TESTS -->
@@ -133,20 +113,6 @@
         </dependency>
 
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <!-- SPRING CLOUD ROUTING -->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
     <build>
         <plugins>
 
@@ -183,12 +149,6 @@
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok-mapstruct-binding</artifactId>
                             <version>${lombok.mapstruct.version}</version>
-                        </path>
-                        <!-- Habilita o processador de anotação therapi-runtime-javadoc -->
-                        <path>
-                            <groupId>com.github.therapi</groupId>
-                            <artifactId>therapi-runtime-javadoc-scribe</artifactId>
-                            <version>0.15.0</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
