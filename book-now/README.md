@@ -61,3 +61,23 @@
 - [Using Docker Compose in Spring Boot 3](https://howtodoinjava.com/spring-boot/spring-boot-docker-compose/)
 - [Beans Validation - Solucionando problemas de integridade dos dados persistentes](https://www.devmedia.com.br/beans-validation-solucionando-problemas-de-integridade-dos-dados-persistentes/27733)
 
+---
+
+### Get Production-ready with Spring Boot Actuator
+
+* **Spring Boot Actuator**: provides Spring Boot's production-ready features
+    * Monitor and manage your application in your production
+* **Spring Boot Starter Actuator**: Starter to add Spring Boot Actuator to your application
+    * spring-boot-starter-actuator
+* Provides a number of endpoints:
+    * **beans**: Complete list of Spring beans in your app
+    * **health**: Application health information
+    * **metrics**: Application metrics
+    * **mappings**: Details around Request Mappings
+    * and a lot more ...
+
+
+
+
+
+
