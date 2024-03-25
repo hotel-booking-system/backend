@@ -1,11 +1,11 @@
-package br.com.hotel.booknow.app.reservation.helper;
+package br.com.hotel.booknow.app.reservation.service.helper;
 
 import br.com.hotel.booknow.app.bedrooms.entity.Bedroom;
 import br.com.hotel.booknow.app.bedrooms.repository.BedroomRepository;
 import br.com.hotel.booknow.app.reservation.dto.ReservationRequest;
 import br.com.hotel.booknow.app.reservation.entity.Reservation;
 import br.com.hotel.booknow.app.reservation.entity.ReservationStatus;
-import br.com.hotel.booknow.app.reservation.mapper.ReservationMapper;
+import br.com.hotel.booknow.app.reservation.service.mapper.ReservationMapper;
 import br.com.hotel.booknow.app.reservation.repository.ReservationRepository;
 import br.com.hotel.booknow.core.exceptions.errors.bedroom.RoomNotAvailableException;
 import br.com.hotel.booknow.core.exceptions.errors.reservation.InvalidReservationDatesException;

@@ -1,4 +1,4 @@
-package br.com.hotel.booknow.app.reservation.mapper;
+package br.com.hotel.booknow.app.reservation.service.mapper;
 
 import br.com.hotel.booknow.app.reservation.dto.ReservationRequest;
 import br.com.hotel.booknow.app.reservation.dto.ReservationResponse;
