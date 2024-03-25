@@ -3,6 +3,9 @@ package br.com.hotel.booknow.app.hotels.controller;
 import br.com.hotel.booknow.app.hotels.dto.request.HotelRequest;
 import br.com.hotel.booknow.app.hotels.dto.response.HotelResponse;
 import br.com.hotel.booknow.app.hotels.service.HotelService;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.servers.Server;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,10 +20,23 @@ import java.util.List;
  * @author juliane.maran
  * @since 19-03-2024
  */
-@Tag(name = "hotel", description = "Operações relacionadas a hotéis")
 @RestController
 @RequestMapping(value = "/hotels")
 @AllArgsConstructor
+@OpenAPIDefinition(
+        info = @Info(
+                title = "API Booknow",
+                description = "API REST Booknow - Hotels",
+                version = "1.0.0"
+        ),
+        tags = @Tag(
+                name = "users",
+                description = "Gerenciamento de hotéis"
+        ),
+        servers = @Server(
+                url = "http://localhost:8585/api/v1/hotels"
+        )
+)
 public class HotelController {
 
     private final HotelService hotelService;

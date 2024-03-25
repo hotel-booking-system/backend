@@ -14,10 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-/**
- * @author juliane.maran
- * @since 19-03-2024
- */
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -50,7 +46,6 @@ public class HotelService {
         Hotel hotel = hotelHelper.findHotelById(id);
         HotelHelper.updateHotelData(request, hotel);
         return hotelHelper.saveHotel(hotel);
-
     }
 
     @Transactional
